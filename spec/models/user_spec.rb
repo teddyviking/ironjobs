@@ -20,11 +20,12 @@ RSpec.describe User, type: :model do
   end
 
   context "when trying to save an email already in use" do
-  	User.create(name: "John", last_name: "Snow", email: "johnsnow@nightswatch.com", location: "The Wall")
-  	user = User.new(name: "Samwell", last_name: "Tarly", email: "johnsnow@nightswatch.com", location: "The Wall" )
-  	user.valid?
+  	
   	it "has an error when email already in use" do
-  		expect(user.errors[:email].any?).to eq(true)
+  		create(:user)
+  		user2 = User.new(name: "Samwell", last_name: "Tarly", email: "johnsnow@nightswatch.com", location: "The Wall" )
+  		user2.valid?
+  		expect(user2.errors[:email].any?).to eq(true)
   	end
   end
 end

@@ -25,6 +25,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'rspec-rails', '~> 3.0'
 
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -49,5 +50,14 @@ group :development, :test do
   gem 'quiet_assets'
 
 
+
+
 end
+
+group :test do
+  gem 'factory_girl_rails', '~> 4.5.0'
+  gem 'database_cleaner', '~> 1.4.1'
+end
+
+
 
