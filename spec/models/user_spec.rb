@@ -4,7 +4,7 @@ RSpec.describe User, type: :model do
   
   context "when saving an user" do
   	include UserHelpers
-  	let(:create_user) {create(:user)}
+  	let(:create_student) {create(:student)}
   	let(:empty_user) {user = User.new}
   	
   	it "has an error when no email included" do
@@ -20,8 +20,8 @@ RSpec.describe User, type: :model do
   		check_mandatory_attribute(:location, empty_user)
   	end
   	it "has an error when email already in use" do
-  		user1 = create_user
-  		user2 = build(:user, email: user1.email )
+  		user1 = create_student
+  		user2 = build(:student, email: user1.email )
   		user2.valid?
   		expect(user2.errors[:email].any?).to eq(true)
   	end
