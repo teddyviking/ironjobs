@@ -49,9 +49,6 @@ group :development, :test do
 
   gem 'quiet_assets'
 
-
-
-
 end
 
 group :test do
