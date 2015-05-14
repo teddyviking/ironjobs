@@ -5,6 +5,8 @@ RSpec.describe User, type: :model do
   context "when saving an user" do
   	include UserHelpers
   	let(:create_student) {create(:student)}
+  	let(:create_company) {create(:company)}
+  	let(:create_admin) {create(:admin)}
   	let(:empty_user) {user = User.new}
   	
   	it "has an error when no email included" do
@@ -21,6 +23,12 @@ RSpec.describe User, type: :model do
   	end
   	it "has an error when no role included" do
   		check_mandatory_attribute(:role, empty_user)
+  	end
+
+  	it "has an error when a not valid role is included" do
+  		user = build(:admin, role: "singer")
+  		user.valid?
+  		expect(user.errors[:role].any?).to eq(true)
   	end
 
   	it "has an error when email already in use" do
