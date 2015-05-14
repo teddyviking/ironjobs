@@ -19,6 +19,10 @@ RSpec.describe User, type: :model do
   	it "has an error when no location included" do
   		check_mandatory_attribute(:location, empty_user)
   	end
+  	it "has an error when no role included" do
+  		check_mandatory_attribute(:role, empty_user)
+  	end
+
   	it "has an error when email already in use" do
   		user1 = create_student
   		user2 = build(:student, email: user1.email )
