@@ -10,6 +10,13 @@ require 'rails_helper'
 #     end
 #   end
 # end
-RSpec.describe UsersHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+# RSpec.describe UsersHelper, type: :helper do
+#   pending "add some examples to (or delete) #{__FILE__}"
+# end
+
+module UserHelpers
+  def check_mandatory_attribute(attribute, user)
+    user.valid?
+    expect(user.errors[attribute].any?).to eq(true)
+  end
 end
