@@ -9,7 +9,7 @@ RSpec.describe User, type: :model do
   		expect(user.errors[:email].any?).to eq(true)
   	end
   	it "has an error when no name included" do
-  		expect(user.errors[:name].any?).to eq(true)
+  		expect(user.errors[:first_name].any?).to eq(true)
   	end
   	it "has an error when no last name included" do
   		expect(user.errors[:last_name].any?).to eq(true)
@@ -20,10 +20,10 @@ RSpec.describe User, type: :model do
   end
 
   context "when trying to save an email already in use" do
-  	
+  		let(:create_user) {create(:user)}
   	it "has an error when email already in use" do
-  		create(:user)
-  		user2 = User.new(name: "Samwell", last_name: "Tarly", email: "johnsnow@nightswatch.com", location: "The Wall" )
+  		user1 = create_user
+  		user2 = build(:user, email: user1.email )
   		user2.valid?
   		expect(user2.errors[:email].any?).to eq(true)
   	end
