@@ -23,7 +23,5 @@ RSpec.describe StudentsController, type: :controller do
 			students = [create(:student), create(:student)]
 			expect(assigns(:students)).to match_array(students)
 		end
-
-
 	end
 end
