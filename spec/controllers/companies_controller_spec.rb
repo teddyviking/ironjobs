@@ -15,5 +15,9 @@ RSpec.describe CompaniesController, type: :controller do
 	      expect(response).to render_template("index")
 	    end
 
+	    it "gets an empty array if no company exist" do
+			expect(assigns(:companies)).to match_array([])
+		end
+
 	end
 end
