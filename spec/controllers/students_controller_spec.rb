@@ -16,7 +16,12 @@ RSpec.describe StudentsController, type: :controller do
 	    end
 
 		it "gets an empty array if no students exist" do
-			expect(assigns(:students)).to eq([])
+			expect(assigns(:students)).to match_array([])
+		end
+
+		it "gets an array of students" do
+			students = [create_student, create_student]
+			expect(assigns(:students)).to match_array(students)
 		end
 
 
