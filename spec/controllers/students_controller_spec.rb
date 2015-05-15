@@ -9,11 +9,17 @@ RSpec.describe StudentsController, type: :controller do
 	      	expect(response).to be_success
 	      	expect(response).to have_http_status(200)
 	    end
-		it "gets an empty array if no students exist" do
-			get :students_index
+		
+		it "renders the index template" do
+	      get :index
+	      expect(response).to render_template("index")
+	    end
 
-			expect(assigns(:users)).to eq([])
-		end
+		# it "gets an empty array if no students exist" do
+		# 	get :index
+
+		# 	expect(assigns(:users)).to eq([])
+		# end
 
 
 	end
