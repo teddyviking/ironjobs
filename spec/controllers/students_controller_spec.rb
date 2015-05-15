@@ -40,7 +40,7 @@ RSpec.describe StudentsController, type: :controller do
 		      	expect(response).to have_http_status(200)
 		    end
 
-		    it "renders the index template" do
+		    it "renders the show template" do
 		      expect(response).to render_template("show")
 		    end
 
