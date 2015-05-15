@@ -19,4 +19,5 @@ module UserHelpers
     user.valid?
     expect(user.errors[attribute].any?).to eq(true)
   end
+
 end
