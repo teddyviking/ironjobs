@@ -5,3 +5,33 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+def create_students(number)
+	number.times {|n| User.create(first_name: "John#{n+1}", 
+								  last_name: "Snow#{n+1}",
+								  location: "The Wall",
+								  email: "johnsnow#{n+1}@nightswatch.com",
+								  role: "student",
+								  searching: [true,false].sample)}
+end
+
+def create_companies(number)
+	number.times {|n| User.create(first_name: "Stannis#{n+1}", 
+								  last_name: "Baratheon#{n+1}",
+								  location: "The Wall",
+								  email: "stannisbaratheon#{n+1}@trueking.com",
+								  role: "company",
+								  searching: [true,false].sample)}
+end
+
+def create_admin(number)
+	number.times {|n| User.create(first_name: "Aemon#{n+1}", 
+								  last_name: "Targaryen#{n+1}",
+								  location: "The Wall",
+								  email: "maesteraemon#{n+1}@nightswatch.com",
+								  role: "admin")}
+end
+
+create_students(3)
+create_companies(3)
+create_admin(1)
