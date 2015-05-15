@@ -1,5 +1,5 @@
 class CompaniesController < ApplicationController
 	def index
-		@companies = []
+		@companies = User.where(role: "company")
 	end
 end
