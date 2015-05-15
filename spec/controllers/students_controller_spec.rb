@@ -42,8 +42,11 @@ RSpec.describe StudentsController, type: :controller do
 		    it "renders the index template" do
 		      expect(response).to render_template("show")
 		    end
-		end
 
+		    it "gets the correct student" do
+		    	expect(assigns(:student)).to eq(student)
+		    end
+		end
 
 	end
 end
