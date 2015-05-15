@@ -19,5 +19,10 @@ RSpec.describe CompaniesController, type: :controller do
 			expect(assigns(:companies)).to match_array([])
 		end
 
+		it "gets an array of companies" do
+			companies = [create_company, create_company]
+			expect(assigns(:companies)).to match_array(companies)
+		end
+
 	end
 end
