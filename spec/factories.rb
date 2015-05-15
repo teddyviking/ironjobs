@@ -5,6 +5,7 @@ FactoryGirl.define do
     last_name  "Snow"
     email { "#{first_name}#{last_name}@nightswatch.com".downcase }
     location "The Wall"
+    searching false
   end
 
   factory :company, class: User do
@@ -13,6 +14,7 @@ FactoryGirl.define do
     last_name  "Baratheon"
     email { "#{first_name}#{last_name}@trueking.com".downcase }
     location "The Wall"
+    searching true
   end
 
 

@@ -37,6 +37,12 @@ RSpec.describe User, type: :model do
   		user2.valid?
   		expect(user2.errors[:email].any?).to eq(true)
   	end
+
+  	it "has an error when user not an admin and searching is not a boolean" do
+  		user = build(:student, searching: "yeah" )
+  		user.valid?
+  		expect(user.errors[:searching].any?).to eq(true)
+  	end
   end
 
 end
