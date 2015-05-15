@@ -30,8 +30,9 @@ RSpec.describe StudentsController, type: :controller do
 	describe "GET #show" do
 		context "the student exists" do
 			before(:each) do 
-				student = create_student
-				get :show, id: student
+				@student = create_student
+
+				get :show, id: @student
 			end
 
 			it "responds successfully with an HTTP 200 status code" do
@@ -44,7 +45,7 @@ RSpec.describe StudentsController, type: :controller do
 		    end
 
 		    it "gets the correct student" do
-		    	expect(assigns(:student)).to eq(student)
+		    	expect(assigns(:student)).to eq(@student)
 		    end
 		end
 
