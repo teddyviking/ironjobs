@@ -23,6 +23,7 @@ RSpec.describe CompaniesController, type: :controller do
 			companies = [create(:company), create(:company)]
 			expect(assigns(:companies)).to match_array(companies)
 		end
-
 	end
+
+	
 end

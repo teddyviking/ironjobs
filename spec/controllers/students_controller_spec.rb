@@ -28,6 +28,12 @@ RSpec.describe StudentsController, type: :controller do
 
 
 	describe "GET #show" do
+		context "the student doesn't exit" do
+			it "responds with an HTTP 404 status code" do
+				expect(response.status).to eq(404)
+			end
+		end
+
 		context "the student exists" do
 			before(:each) do 
 				@student = create_student
