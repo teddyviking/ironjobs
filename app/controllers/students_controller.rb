@@ -1,5 +1,5 @@
 class StudentsController < ApplicationController
 	def index
-		@students = []
+		@students = User.where(role: "student")
 	end
 end

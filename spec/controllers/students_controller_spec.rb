@@ -20,7 +20,7 @@ RSpec.describe StudentsController, type: :controller do
 		end
 
 		it "gets an array of students" do
-			students = [create_student, create_student]
+			students = [create(:student), create(:student)]
 			expect(assigns(:students)).to match_array(students)
 		end
 
