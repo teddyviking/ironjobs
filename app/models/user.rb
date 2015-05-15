@@ -4,7 +4,9 @@ class User < ActiveRecord::Base
 	validate :role_has_to_be_student_admin_or_company, :searching_is_present_in_students_and_companies
 
 
-
+	def name
+		first_name + " " + last_name
+	end
 
 	private
 
