@@ -4,7 +4,7 @@ class CompaniesController < ApplicationController
 	end
 
 	def show
-
+		@companies = User.where(role: "company")
 		render "index", status: 301
 		
 	end
