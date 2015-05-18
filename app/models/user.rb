@@ -8,6 +8,10 @@ class User < ActiveRecord::Base
 		first_name + " " + last_name
 	end
 
+	def self.students
+		self.where(role: "student")
+	end
+
 	private
 
 	def role_has_to_be_student_admin_or_company
