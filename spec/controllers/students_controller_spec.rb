@@ -66,4 +66,19 @@ RSpec.describe StudentsController, type: :controller do
 		    end
 		end
 	end
+
+
+	describe "PATCH #update" do
+		context "the student is invalid" do
+			before(:each) do
+				@student = build(:invalid_student)
+				@student.save
+			end
+			it "renders the edit template" do
+				expect(response).to render_template("edit")
+			end
+		end
+
+	end
+
 end
