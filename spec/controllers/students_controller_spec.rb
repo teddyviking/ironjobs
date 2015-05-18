@@ -93,9 +93,8 @@ RSpec.describe StudentsController, type: :controller do
 				patch :update, {id: @student.id, user: (attributes_for(:complete_student))}
 			end
 
-			it "responds with an HTTP 200 status code" do
-				expect(response).to be_success
-		      	expect(response).to have_http_status(200)
+			it "responds with an HTTP 302 status code" do
+		      	expect(response).to have_http_status(302)
 			end
 
 			it "redirects to the show template of the student" do

@@ -23,6 +23,7 @@ class StudentsController < ApplicationController
 			render "edit", status: 422
 			return
 		end
+		redirect_to student_path(@student)
 	end
 
 
