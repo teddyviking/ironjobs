@@ -7,7 +7,7 @@ FactoryGirl.define do
     f.last_name  { Faker::Name.last_name }
     f.email { "#{first_name}#{last_name}@nightswatch.com".downcase }
     f.location Faker::Address.city
-    f.searching false
+    f.searching [false, true].sample
   end
 
   factory :company, class: User do |f|
@@ -16,7 +16,7 @@ FactoryGirl.define do
     f.last_name  {Faker::Name.last_name}
     f.email { "#{first_name}#{last_name}@trueking.com".downcase }
     f.location Faker::Address.city
-    f.searching true
+    f.searching [false, true].sample
   end
 
 
@@ -31,6 +31,15 @@ FactoryGirl.define do
   factory :invalid_student, parent: :student do |f|
     f.role "singer"
     f. searching nil
+  end
+
+  factory :complete_student, parent: :student do |f|
+    f.facebook {Faker::Internet.url}
+    f.twitter {Faker::Internet.url}
+    f.github {Faker::Internet.url}
+    f.linkedin {Faker::Internet.url}
+    f.phone {Faker::PhoneNumber.cell_phone}
+    f.url {Faker::Internet.url}
   end
 
   factory :invalid_company, parent: :company do |f|

@@ -3,6 +3,8 @@ require 'rails_helper'
 RSpec.describe StudentsController, type: :controller do
 	# include StudentHelpers
 	let(:create_student) {create(:student)}
+	let(:create_complete_student) {create(:complete_student)}
+
 
   	describe "GET #index" do
   		before(:each) {get :index}
@@ -82,6 +84,20 @@ RSpec.describe StudentsController, type: :controller do
 			it "responds with an HTTP 422 status code" do
 				expect(response).to have_http_status(422)
 			end
+		end
+
+		context "the student is valid" do
+			before(:each) do
+				@student = create_student
+
+				patch :update, {id: @student.id, user: (attributes_for(:complete_student))}
+			end
+
+			it "responds with an HTTP 200 status code" do
+				expect(response).to be_success
+		      	expect(response).to have_http_status(200)
+			end
+
 		end
 
 	end
