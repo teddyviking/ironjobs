@@ -30,7 +30,7 @@ RSpec.describe StudentsController, type: :controller do
 
 
 	describe "GET #show" do
-		context "the student doesn't exit" do
+		context "when the student doesn't exit" do
 			before(:each) {	get :show,{ id: "no_id" } }
 
 			it "responds with an HTTP 404 status code" do
@@ -47,7 +47,7 @@ RSpec.describe StudentsController, type: :controller do
 			end
 		end
 
-		context "the student exists" do
+		context "when the student exists" do
 			before(:each) do 
 				@student = create_student
 
@@ -71,7 +71,7 @@ RSpec.describe StudentsController, type: :controller do
 
 
 	describe "PATCH #update" do
-		context "the student is invalid" do
+		context "when the student is invalid" do
 			before(:each) do
 				@student = create_student
 
@@ -86,7 +86,7 @@ RSpec.describe StudentsController, type: :controller do
 			end
 		end
 
-		context "the student is valid" do
+		context "when the student is valid" do
 			before(:each) do
 				@student = create_student
 
@@ -100,7 +100,22 @@ RSpec.describe StudentsController, type: :controller do
 			it "redirects to the show template of the student" do
 				expect(response).to redirect_to(student_path(@student))
 			end
+		end
 
+		context "when trying to change the searching status" do
+			it "updates default searching to true" do
+				student = create_student
+
+				patch :update, {id: student.id, user: ({searching: true}) }
+
+				expect(assigns(:student).searching).to eq(true)
+			end
+			it "updates from true to false" do
+				student = create(:student, searching: true)
+
+				patch :update, {id: student.id, user: ({searching: false}) }
+				expect(assigns(:student).searching).to eq(false)
+			end
 		end
 
 	end

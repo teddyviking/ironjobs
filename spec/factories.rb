@@ -7,7 +7,7 @@ FactoryGirl.define do
     f.last_name  { Faker::Name.last_name }
     f.email { "#{first_name}#{last_name}@nightswatch.com".downcase }
     f.location Faker::Address.city
-    f.searching [false, true].sample
+    f.searching false
   end
 
   factory :company, class: User do |f|
@@ -16,7 +16,7 @@ FactoryGirl.define do
     f.last_name  {Faker::Name.last_name}
     f.email { "#{first_name}#{last_name}@trueking.com".downcase }
     f.location Faker::Address.city
-    f.searching [false, true].sample
+    f.searching false
   end
 
 
