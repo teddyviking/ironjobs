@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  devise_for :users
+  root to: "students#index"
+
+
   get '/students' => "students#index", as: :students
   get '/students/:id' => "students#show", as: :student
   get '/students/:id/edit' => "students#edit", as: :edit_student

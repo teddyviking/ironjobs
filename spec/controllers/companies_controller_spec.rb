@@ -26,4 +26,16 @@ RSpec.describe CompaniesController, type: :controller do
 	end
 
 	
+
+	# describe "POST #create" do
+	# 	context "when register information is invalid" do
+	# 		it ""
+	# 	end
+
+	# 	context "when register information is valid" do
+
+	# 	end
+	# end
+
+	
 end
