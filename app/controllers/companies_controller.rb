@@ -7,6 +7,7 @@ class CompaniesController < ApplicationController
 		@company = User.find_by_id(params[:id])
 		unless @company
 			@companies = User.where(role: "company")
+			flash.now[:alert] = "Company not found"
 			render "index", status: 301
 			return
 		end
