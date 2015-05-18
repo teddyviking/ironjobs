@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'helpers/users_helper_spec'
 
 RSpec.describe User, type: :model do
   

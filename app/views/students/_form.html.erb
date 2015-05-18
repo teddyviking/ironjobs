@@ -1,0 +1,63 @@
+<%= form_for @student, url: student_path do |f| %>
+
+ <% if @student.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@student.errors.count, "error") %> prohibited the profile from being saved:</h2>
+
+      <ul>
+      <% @student.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name %><br>
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :city %><br>
+    <%= f.text_field :location %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.email_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %><br>
+    <%= f.telephone_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :web_site %><br>
+    <%= f.url_field :url%>
+  </div>
+  <div class="field">
+    <%= f.label :facebook %><br>
+    <%= f.url_field :facebook%>
+  </div>
+  <div class="field">
+    <%= f.label :github %><br>
+    <%= f.url_field :github%>
+  </div>
+  <div class="field">
+    <%= f.label :twitter %><br>
+    <%= f.url_field :twitter%>
+  </div>
+  <div class="field">
+    <%= f.label :linkedin %><br>
+    <%= f.url_field :linkedin%>
+  </div>
+  <div class="field">
+    <%= f.label :searching %><br>
+    <%= f.check_box :searching%>
+  </div>
+ 
+  <div class="actions">
+    <%= f.submit (@student.new_record? ? 'Create student' : 'Update your profile') %>
+  </div>
+<% end %>

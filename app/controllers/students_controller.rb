@@ -11,4 +11,8 @@ class StudentsController < ApplicationController
 			render "index", status: 301
 		end
 	end
+
+	def edit
+		@student = User.find_by_id(params[:id])
+	end
 end
