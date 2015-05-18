@@ -58,6 +58,10 @@ RSpec.describe CompaniesController, type: :controller do
 		    it "renders the show template" do
 		      expect(response).to render_template("show")
 		    end
+
+		    it "gets the right company" do
+		    	expect(assigns(:company)).to eq(@company)
+		    end
 		end
 	end
 	
