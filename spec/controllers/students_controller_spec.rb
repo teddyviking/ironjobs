@@ -73,10 +73,14 @@ RSpec.describe StudentsController, type: :controller do
 			before(:each) do
 				@student = create_student
 
-				patch :update, params: {id: @student.id, student: attributes_for(:invalid_student)}
+				patch :update, {id: @student.id, user: (attributes_for(:invalid_student))}
 			end
 			it "renders the edit template" do
 				expect(response).to render_template("edit")
+			end
+
+			it "responds with an HTTP 422 status code" do
+				expect(response.to have_http_status(422))
 			end
 		end
 

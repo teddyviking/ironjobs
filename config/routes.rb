@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get '/students' => "students#index", as: :students
   get '/students/:id' => "students#show", as: :student
   get '/students/:id/edit' => "students#edit", as: :edit_student
+  patch '/students/:id' => "students#update"
 
 
 
