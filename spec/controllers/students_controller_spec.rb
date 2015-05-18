@@ -30,7 +30,8 @@ RSpec.describe StudentsController, type: :controller do
 	describe "GET #show" do
 		context "the student doesn't exit" do
 			it "responds with an HTTP 404 status code" do
-				expect(response.status).to eq(404)
+				get :show,{ id: "no_id" }
+				expect(response).to have_http_status(404)
 			end
 		end
 
