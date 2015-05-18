@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     get "/sign_up", to: "devise/registrations#new"
+    get "/edit_profile", to: "devise/registrations#edit"
   end
   root to: "students#index"
 

@@ -1,7 +1,46 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
+
+  <h2>Your company profile</h2>
+
+    <div class="field">
+      <%= f.label :description %><br />
+      <%= f.text_area :description %>
+    </div>
+
+  <div class="field">
+    <%= f.label :web_site %><br>
+    <%= f.url_field :url%>
+  </div>
+
+  <div class="field">
+    <%= f.label :facebook %><br>
+    <%= f.url_field :facebook%>
+  </div>
+
+  <div class="field">
+    <%= f.label :github %><br>
+    <%= f.url_field :github%>
+  </div>
+
+  <div class="field">
+    <%= f.label :twitter %><br>
+    <%= f.url_field :twitter%>
+  </div>
+
+  <div class="field">
+    <%= f.label :linkedin %><br>
+    <%= f.url_field :linkedin%>
+  </div>
+
+  <div class="field">
+    <%= f.label "Do you have open positions?" %><br>
+    <%= f.check_box :searching%>
+  </div>
+
+
+  <h2>Account details</h2>
 
   <div class="field">
     <%= f.label :email %><br />
@@ -11,6 +50,26 @@
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
+
+   <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name %>
+  </div>
+
+   <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :location %><br />
+    <%= f.text_field :location %>
+  </div>
+
+  <div class="field">
+    <%= f.label :phone %><br>
+    <%= f.telephone_field :phone %>
+  </div>
 
   <div class="field">
     <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
