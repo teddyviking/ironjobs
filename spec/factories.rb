@@ -8,6 +8,8 @@ FactoryGirl.define do
     f.email { "#{first_name}#{last_name}@nightswatch.com".downcase }
     f.location Faker::Address.city
     f.searching false
+    f.password "test1234"
+    f.password_confirmation "test1234"
   end
 
   factory :company, class: User do |f|
@@ -17,6 +19,8 @@ FactoryGirl.define do
     f.email { "#{first_name}#{last_name}@trueking.com".downcase }
     f.location Faker::Address.city
     f.searching false
+    f.password "test1234"
+    f.password_confirmation "test1234"
   end
 
 
@@ -26,6 +30,8 @@ FactoryGirl.define do
     f.last_name  {Faker::Name.last_name}
     f.email { "#{first_name}#{last_name}@nightswatch.com".downcase }
     f.location {Faker::Address.city}
+    f.password "test1234"
+    f.password_confirmation "test1234"
   end
 
   factory :invalid_student, parent: :student do |f|

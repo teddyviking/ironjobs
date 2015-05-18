@@ -12,7 +12,9 @@ def create_students(number)
 								  location: "The Wall",
 								  email: "johnsnow#{n+1}@nightswatch.com",
 								  role: "student",
-								  searching: [true,false].sample)}
+								  searching: false,
+								  password: "test1234",
+    							  password_confirmation: "test1234")}
 end
 
 def create_companies(number)
@@ -21,7 +23,9 @@ def create_companies(number)
 								  location: "The Wall",
 								  email: "stannisbaratheon#{n+1}@trueking.com",
 								  role: "company",
-								  searching: [true,false].sample)}
+								  searching: false,
+								  password: "test1234",
+    							  password_confirmation: "test1234")}
 end
 
 def create_admin(number)
@@ -29,7 +33,9 @@ def create_admin(number)
 								  last_name: "Targaryen#{n+1}",
 								  location: "The Wall",
 								  email: "maesteraemon#{n+1}@nightswatch.com",
-								  role: "admin")}
+								  role: "admin",
+								  password: "test1234",
+    							  password_confirmation: "test1234")}
 end
 
 create_students(3)
