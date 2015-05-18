@@ -6,7 +6,7 @@ class StudentsController < ApplicationController
 	def show
 		@student = User.find_by_id(params[:id])
 		unless @student
-			redirect_to students_path, status: 404
+			redirect_to students_path, status: 301
 		end
 	end
 end

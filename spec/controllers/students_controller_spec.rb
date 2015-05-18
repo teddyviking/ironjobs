@@ -29,9 +29,14 @@ RSpec.describe StudentsController, type: :controller do
 
 	describe "GET #show" do
 		context "the student doesn't exit" do
+			before(:each) {	get :show,{ id: "no_id" } }
+
 			it "responds with an HTTP 404 status code" do
-				get :show,{ id: "no_id" }
-				expect(response).to have_http_status(404)
+				expect(response).to have_http_status(301)
+			end
+
+			it "renders the index template" do
+				expect(response).to render_template("index")
 			end
 		end
 
