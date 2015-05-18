@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
 
   get '/companies' => "companies#index", as: :companies
+  get '/companies/:id' => "companies#show", as: :company
 
 
   # The priority is based upon order of creation: first created -> highest priority.

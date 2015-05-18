@@ -25,6 +25,20 @@ RSpec.describe CompaniesController, type: :controller do
 		end
 	end
 
+	describe "GET #show" do
+		context "when the company doesn't exit" do
+			before(:each) {	get :show,{ id: "no_id" } }
+
+			it "responds with an HTTP 301 status code" do
+				expect(response).to have_http_status(301)
+			end
+
+			it "renders the index template" do
+				expect(response).to render_template("index")
+			end
+
+		end
+	end
 	
 
 	# describe "POST #create" do

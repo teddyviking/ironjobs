@@ -33,7 +33,7 @@ RSpec.describe StudentsController, type: :controller do
 		context "when the student doesn't exit" do
 			before(:each) {	get :show,{ id: "no_id" } }
 
-			it "responds with an HTTP 404 status code" do
+			it "responds with an HTTP 301 status code" do
 				expect(response).to have_http_status(301)
 			end
 
