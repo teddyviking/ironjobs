@@ -6,7 +6,8 @@ class StudentsController < ApplicationController
 	def show
 		@student = User.find_by_id(params[:id])
 		unless @student
-			redirect_to students_path, status: 301
+			flash.now[:alert] = "Student not found"
+			render "index", status: 301
 		end
 	end
 end
