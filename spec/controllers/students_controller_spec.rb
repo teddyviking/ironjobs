@@ -38,6 +38,11 @@ RSpec.describe StudentsController, type: :controller do
 			it "renders the index template" do
 				expect(response).to render_template("index")
 			end
+
+			it "gets an array of students" do
+				students = [create(:student), create(:student)]
+				expect(assigns(:students)).to match_array(students)
+			end
 		end
 
 		context "the student exists" do
