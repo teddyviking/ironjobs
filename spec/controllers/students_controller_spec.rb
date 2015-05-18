@@ -98,6 +98,10 @@ RSpec.describe StudentsController, type: :controller do
 		      	expect(response).to have_http_status(200)
 			end
 
+			it "redirects to the show template of the student" do
+				expect(response).to redirect_to(student_path(@student))
+			end
+
 		end
 
 	end
