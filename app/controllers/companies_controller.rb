@@ -4,8 +4,11 @@ class CompaniesController < ApplicationController
 	end
 
 	def show
-		@companies = User.where(role: "company")
-		render "index", status: 301
-		
+		@company = User.find_by_id(params[:id])
+		unless @company
+			@companies = User.where(role: "company")
+			render "index", status: 301
+			return
+		end
 	end
 end
