@@ -80,7 +80,7 @@ RSpec.describe StudentsController, type: :controller do
 			end
 
 			it "responds with an HTTP 422 status code" do
-				expect(response.to have_http_status(422))
+				expect(response).to have_http_status(422)
 			end
 		end
 

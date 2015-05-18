@@ -20,7 +20,7 @@ class StudentsController < ApplicationController
 	def update
 		@student = User.find_by_id(params[:id])
 		unless @student.update(student_params)
-			render "edit"
+			render "edit", status: 422
 			return
 		end
 	end
