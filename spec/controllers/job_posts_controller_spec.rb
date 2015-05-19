@@ -19,5 +19,9 @@ RSpec.describe JobPostsController, type: :controller do
 	      expect(response).to render_template("index")
 	    end
 
+	    it "gets an empty array if no post jobs exist" do
+			expect(assigns(:post_jobs)).to match_array([])
+		end
+
 	end
 end
