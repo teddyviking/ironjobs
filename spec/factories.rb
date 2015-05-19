@@ -70,6 +70,8 @@ FactoryGirl.define do
 
   factory :invalid_job_post, parent: :job_post do |f|
     f.company_id nil
+    f.description nil
+    f.location nil
   end
 
 end

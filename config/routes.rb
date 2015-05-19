@@ -21,8 +21,8 @@ Rails.application.routes.draw do
 
 
   get '/companies/:company_id/job_posts' => "job_posts#index"
-  get '/companies/:company_id/job_posts/:id' => "job_posts#show"
-  get '/companies/:company_id/job_posts/new' => "job_posts#new"
+  get '/companies/:company_id/job_posts/:id' => "job_posts#show", as: :company_job_posts
+  get '/companies/:company_id/job_posts/new' => "job_posts#new", as: :new_company_job_post
   post '/companies/:company_id/job_posts' => "job_posts#create"
 
 

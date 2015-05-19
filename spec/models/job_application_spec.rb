@@ -19,11 +19,10 @@ RSpec.describe JobApplication, type: :model do
 			expect(student.job_applications.create).to be_invalid
 
 		end
-		it "is valid" do
-			student = create(:student)
-			job_post = create_company.job_posts.create
-			expect(student.job_applications.create(job_post_id: job_post.id)).to be_valid
-
-		end
+		# it "is valid" do
+		# 	student = create(:student)
+		# 	job_post = create_company.job_posts.create
+		# 	expect(student.job_applications.create(job_post_id: job_post.id)).to be_valid
+		# end
 	end
 end

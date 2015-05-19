@@ -42,10 +42,17 @@ RSpec.describe JobPostsController, type: :controller do
 			it "responds with an HTTP 422 status code" do
 				expect(response).to have_http_status(422)
 			end
-
 		end
-		before(:each) do
-			post :create,{ company_id: @company.id }
+		context "when creating a valid job post" do
+			before(:each){ post :create,{ company_id: @company.id, job_post:(attributes_for(:job_post))}}
+
+			it "responds with an HTTP 302 status code" do
+		      	expect(response).to have_http_status(302)
+			end
+
+			it "redirects to the show template of the student" do
+				expect(response).to redirect_to(company_job_posts_path(@company, JobPost.last))
+			end
 		end
 
 	end
