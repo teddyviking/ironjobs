@@ -20,10 +20,10 @@ Rails.application.routes.draw do
   get '/companies/:id' => "companies#show", as: :company
 
 
-  get '/companies/:company_id/job_posts' => "job_posts#index"
-  get '/companies/:company_id/job_posts/:id' => "job_posts#show", as: :company_job_posts
+  get '/companies/:company_id/job_posts' => "job_posts#index", as: :company_job_posts
   get '/companies/:company_id/job_posts/new' => "job_posts#new", as: :new_company_job_post
-  post '/companies/:company_id/job_posts' => "job_posts#create"
+  get '/companies/:company_id/job_posts/:id' => "job_posts#show", as: :company_job_post
+  post '/companies/:company_id/job_posts' => "job_posts#create" 
 
 
   # The priority is based upon order of creation: first created -> highest priority.

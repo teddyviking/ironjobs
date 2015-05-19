@@ -13,13 +13,14 @@ class JobPostsController < ApplicationController
 	def new
 		@company = User.find_by_id(params[:company_id])
 		@job_post = @company.job_posts.new
+		render 'new'
 	end
 
 	def create
 		@company = User.find_by_id(params[:company_id])
  		@job_post = @company.job_posts.new job_post_params
  		if @job_post.save
- 			redirect_to company_job_posts_path(@company, @job_post)
+ 			redirect_to company_job_post_path(@company, @job_post)
  		else
 			render 'new', status: 422
 		end
