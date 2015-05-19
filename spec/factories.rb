@@ -49,7 +49,23 @@ FactoryGirl.define do
   end
 
   factory :invalid_company, parent: :company do |f|
-    f. role "singer"
-    f. searching nil
+    f.role "singer"
+    f.searching nil
   end
+end
+
+
+
+
+FactoryGirl.define do
+  factory :job_post do |f|
+    f.company_id 1
+    f.company_type "User"
+    f.description {Faker::Lorem.paragraph}
+    f.location {Faker::Address.city}
+    f.salary {Faker::Number.number(6)}
+    f.position {Faker::Name.title}
+    f.contract_type {Faker::Lorem.word}
+  end
+
 end
