@@ -7,7 +7,8 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true
   validate :role_has_to_be_student_admin_or_company, :searching_is_present_in_students_and_companies
 
-  has_many :job_posts, as: :company
+  has_many :job_posts, as: :company 
+  has_many :job_applications, as: :student
 
 
 
@@ -17,9 +18,16 @@ class User < ActiveRecord::Base
 		first_name + " " + last_name
 	end
 
-	def self.students
-		self.where(role: "student")
-	end
+	scope :students, -> { where(role: "student") }
+	scope :companies, -> { where(role: "company")}
+
+	# def self.students
+	# 	self.where(role: "student")
+	# end
+
+	# def self.companies
+	# 	self.where(role: "company")
+	# end
 
 	private
 

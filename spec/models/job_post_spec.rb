@@ -4,7 +4,9 @@ RSpec.describe JobPost, type: :model do
 	context "when creating a JobPost from a student" do
 		it "is invalid" do
 			student = create(:student)
-			expect(student.job_posts.create).to be_invalid
+			job_post = student.job_posts.create
+			expect(job_post).to be_invalid
+			expect(JobPost.last).not_to eq(job_post)
 		end
 	end
 	context "when creating a JobPost from a company" do
