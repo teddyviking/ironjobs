@@ -30,7 +30,9 @@ RSpec.describe User, type: :model do
   		check_mandatory_attribute(:location, empty_user)
   	end
   	it "is invalid if no role included" do
-  		check_mandatory_attribute(:role, empty_user)
+      user = empty_user
+      user.role = nil
+  		check_mandatory_attribute(:role, user)
   	end
 
   	it "is invalid if not valid role is included" do
