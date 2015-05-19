@@ -59,7 +59,7 @@ end
 
 FactoryGirl.define do
   factory :job_post do |f|
-    f.company_id 1
+    f.company_id 4
     f.company_type "User"
     f.description {Faker::Lorem.paragraph}
     f.location {Faker::Address.city}

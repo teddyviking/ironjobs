@@ -19,8 +19,13 @@ RSpec.describe JobPostsController, type: :controller do
 	      expect(response).to render_template("index")
 	    end
 
-	    it "gets an empty array if no post jobs exist" do
-			expect(assigns(:post_jobs)).to match_array([])
+	    it "gets an empty array if no job posts exist" do
+			expect(assigns(:job_posts)).to match_array([])
+		end
+
+		it "gets an array of job posts" do
+			job_posts = [create(:job_post, company_id: @company.id), create(:job_post, company_id: @company.id)]
+			expect(assigns(:job_posts)).to match_array(job_posts)
 		end
 
 	end
