@@ -1,0 +1,9 @@
+<h1>Job Posts of <%= @company.name %></h1>
+
+<ul>
+	<% @job_posts. each do |post| %>
+		<li> <%= post.position + " in " + post.location %></li>
+
+	<% end %>
+
+</ul>
