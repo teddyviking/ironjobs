@@ -7,7 +7,7 @@ RSpec.describe JobPostsController, type: :controller do
 		
 		before(:each) do 
 			@company = create(:company)
-			get :index,{ id: @company.id }
+			get :index,{ company_id: @company.id }
 		end
 
 		it "responds successfully with an HTTP 200 status code" do
