@@ -11,10 +11,51 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150518144905) do
+ActiveRecord::Schema.define(version: 20150519074942) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "applications", force: :cascade do |t|
+    t.integer "student_id"
+    t.integer "job_posting_id"
+  end
+
+  add_index "applications", ["job_posting_id"], name: "index_applications_on_job_posting_id", using: :btree
+  add_index "applications", ["student_id"], name: "index_applications_on_student_id", using: :btree
+
+  create_table "job_applications", force: :cascade do |t|
+    t.integer  "student_id"
+    t.integer  "job_posting_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "job_applications", ["job_posting_id"], name: "index_job_applications_on_job_posting_id", using: :btree
+  add_index "job_applications", ["student_id"], name: "index_job_applications_on_student_id", using: :btree
+
+  create_table "job_postings", force: :cascade do |t|
+    t.text     "description"
+    t.string   "title"
+    t.string   "position"
+    t.string   "contract_type"
+    t.string   "category"
+    t.integer  "salary"
+    t.string   "location"
+    t.date     "deadline"
+    t.integer  "company_id"
+    t.string   "company_type"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "job_posts", force: :cascade do |t|
+    t.integer  "company_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "job_posts", ["company_id"], name: "index_job_posts_on_company_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "location"
