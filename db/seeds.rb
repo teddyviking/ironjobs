@@ -7,37 +7,54 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 def create_students(number)
-	number.times {|n| User.create(first_name: "John#{n+1}", 
-								  last_name: "Snow#{n+1}",
-								  location: "The Wall",
-								  email: "johnsnow#{n+1}@nightswatch.com",
+	students = []
+	number.times {|n| students << User.create(first_name: Faker::Name.first_name, 
+								  last_name: Faker::Name.last_name,
+								  location: Faker::Address.city,
+								  email: Faker::Internet.email,
 								  role: "student",
 								  searching: false,
 								  password: "test1234",
     							  password_confirmation: "test1234")}
+	students
 end
 
 def create_companies(number)
-	number.times {|n| User.create(first_name: "Stannis#{n+1}", 
-								  last_name: "Baratheon#{n+1}",
-								  location: "The Wall",
-								  email: "stannisbaratheon#{n+1}@trueking.com",
+	companies = []
+	number.times {|n| companies << User.create(first_name: Faker::Name.first_name, 
+								  last_name: Faker::Name.last_name,
+								  location: Faker::Address.city,
+								  email: Faker::Internet.email,
 								  role: "company",
 								  searching: false,
 								  password: "test1234",
     							  password_confirmation: "test1234")}
+	companies
 end
 
 def create_admin(number)
-	number.times {|n| User.create(first_name: "Aemon#{n+1}", 
-								  last_name: "Targaryen#{n+1}",
-								  location: "The Wall",
-								  email: "maesteraemon#{n+1}@nightswatch.com",
+	admin = []
+	number.times {|n| admin << User.create(first_name: Faker::Name.first_name, 
+								  last_name: Faker::Name.last_name,
+								  location: Faker::Address.city,
+								  email: Faker::Internet.email,
 								  role: "admin",
 								  password: "test1234",
     							  password_confirmation: "test1234")}
+	admin
 end
 
-create_students(3)
-create_companies(3)
-create_admin(1)
+def create_job_posts(number, company)
+	number.times {|n| JobPost.create( company_id: company.id,
+    								company_type: "User",
+    								description: Faker::Lorem.paragraph,
+    								location: Faker::Address.city,
+    								salary: Faker::Number.number(6),
+    								position: Faker::Name.title,
+    								contract_type: Faker::Lorem.word )}
+end
+
+students = create_students(3)
+companies = create_companies(3)
+admin = create_admin(1)
+job_posts = companies.each{|company| create_job_posts(3, company)}

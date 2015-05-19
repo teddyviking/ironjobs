@@ -52,13 +52,15 @@ group :development, :test do
   gem 'quiet_assets'
 
   gem 'factory_girl_rails', '~> 4.5.0'
+  
+  gem 'faker'
 
 end
 
 group :test do
   
   gem 'database_cleaner', '~> 1.4.1'
-  gem 'faker'
+  
   gem 'capybara'
   gem 'guard-rspec'
   gem 'launchy' 
