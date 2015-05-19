@@ -11,11 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20150519074942) do
+=======
+ActiveRecord::Schema.define(version: 20150518163419) do
+>>>>>>> a20eb9888b6c7a56baa12f3fa01011a18ef488dc
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+<<<<<<< HEAD
   create_table "applications", force: :cascade do |t|
     t.integer "student_id"
     t.integer "job_posting_id"
@@ -34,6 +39,8 @@ ActiveRecord::Schema.define(version: 20150519074942) do
   add_index "job_applications", ["job_posting_id"], name: "index_job_applications_on_job_posting_id", using: :btree
   add_index "job_applications", ["student_id"], name: "index_job_applications_on_student_id", using: :btree
 
+=======
+>>>>>>> a20eb9888b6c7a56baa12f3fa01011a18ef488dc
   create_table "job_postings", force: :cascade do |t|
     t.text     "description"
     t.string   "title"
@@ -49,6 +56,7 @@ ActiveRecord::Schema.define(version: 20150519074942) do
     t.datetime "updated_at",    null: false
   end
 
+<<<<<<< HEAD
   create_table "job_posts", force: :cascade do |t|
     t.integer  "company_id"
     t.datetime "created_at", null: false
@@ -57,6 +65,8 @@ ActiveRecord::Schema.define(version: 20150519074942) do
 
   add_index "job_posts", ["company_id"], name: "index_job_posts_on_company_id", using: :btree
 
+=======
+>>>>>>> a20eb9888b6c7a56baa12f3fa01011a18ef488dc
   create_table "users", force: :cascade do |t|
     t.string   "location"
     t.string   "first_name"
