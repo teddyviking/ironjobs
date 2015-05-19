@@ -68,4 +68,8 @@ FactoryGirl.define do
     f.contract_type {Faker::Lorem.word}
   end
 
+  factory :invalid_job_post, parent: :job_post do |f|
+    f.company_id nil
+  end
+
 end

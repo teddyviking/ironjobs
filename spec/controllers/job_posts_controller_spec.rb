@@ -29,4 +29,24 @@ RSpec.describe JobPostsController, type: :controller do
 		end
 
 	end
+
+
+	describe "POST #create" do
+		before(:each) {@company= create(:company)}
+		context "when creating an invalid job post" do
+			before(:each) { post :create,{company_id: @company.id, job_post:(attributes_for(:invalid_job_post))}}
+			it "renders the new template" do
+				expect(response).to render_template("new")
+			end
+
+			it "responds with an HTTP 422 status code" do
+				expect(response).to have_http_status(422)
+			end
+
+		end
+		before(:each) do
+			post :create,{ company_id: @company.id }
+		end
+
+	end
 end
