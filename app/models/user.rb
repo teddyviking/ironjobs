@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true
   validate :role_has_to_be_student_admin_or_company, :searching_is_present_in_students_and_companies
 
-  has_many :job_posts
+  has_many :job_posts, as: :company
 
 
 
