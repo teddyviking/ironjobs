@@ -51,7 +51,7 @@ RSpec.describe JobPostsController, type: :controller do
 			end
 
 			it "redirects to the show template of the student" do
-				expect(response).to redirect_to(company_job_posts_path(@company, JobPost.last))
+				expect(response).to redirect_to(company_job_post_path(@company, JobPost.last))
 			end
 		end
 
