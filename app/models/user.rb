@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
 
   has_many :job_posts, as: :company 
   has_many :job_applications, as: :student
+  has_many :applied_job_posts, through: :job_applications, source: 'job_post'
 
   acts_as_taggable
 

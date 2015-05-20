@@ -1,0 +1,10 @@
+
+
+<%= form_tag("/job_search", method: "get") do %>
+  <div class="field">
+	<%= label_tag(:query, "Search for:") %>
+ 	<%= text_field_tag(:query) %>
+  </div>
+  
+  <%= submit_tag("Search") %>
+<% end %>

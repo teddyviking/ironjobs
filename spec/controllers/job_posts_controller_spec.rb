@@ -54,6 +54,42 @@ RSpec.describe JobPostsController, type: :controller do
 				expect(response).to redirect_to(company_job_post_path(@company, JobPost.last))
 			end
 		end
+	end
+
+	describe "PATCH #update" do
+
+		context "when trying to update invalid attributes" do
+			before(:each) do
+				@company = create(:company)
+				@job_post = create(:job_post, company_id: @company.id)
+
+				patch :update, {company_id: @company.id, id: @job_post.id, job_post:(attributes_for(:invalid_job_post))}
+			end
+			it "renders the edit template" do
+				expect(response).to render_template("edit")
+			end
+			it "responds with an HTTP 422 status code" do
+				expect(response).to have_http_status(422)
+			end
+		end
+
+		context "when trying to update valid attributes" do
+			before(:each) do
+				@company = create(:company)
+				@job_post = create(:job_post, company_id: @company.id)
+
+				patch :update, {company_id: @company.id, id: @job_post.id, job_post:({salary: 20000})}
+			end
+			it "redirects to the updated job post" do
+				expect(response).to redirect_to(company_job_post_path(@company, @job_post))
+			end
+			it "responds with an HTTP 302 status code" do
+		      	expect(response).to have_http_status(302)
+			end
+			it "makes changes to the job post" do
+				expect(assigns(:job_post).salary).to eq(20000)
+			end
+		end
 
 	end
 end

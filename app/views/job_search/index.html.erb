@@ -1,0 +1,11 @@
+<h1>Available Jobs</h1>
+
+<%= render 'form' %>
+
+<ul>
+	<% @job_posts.each do |post| %>
+		<li><%= post.position %> <br>
+			tags: <%= post.tag_list %>
+		</li>
+	<% end %>
+</ul>

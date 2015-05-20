@@ -6,7 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-def create_students(number)
+
+def create_students(number, tags)
 	students = []
 	number.times {|n| students << User.create(first_name: Faker::Name.first_name, 
 								  last_name: Faker::Name.last_name,
@@ -14,13 +15,13 @@ def create_students(number)
 								  email: Faker::Internet.email,
 								  role: "student",
 								  searching: false,
-								  tag_list: "javascript, rails, css",
+								  tag_list: tags.sample(rand(1..3)),
 								  password: "test1234",
     							  password_confirmation: "test1234")}
 	students
 end
 
-def create_companies(number)
+def create_companies(number, tags)
 	companies = []
 	number.times {|n| companies << User.create(first_name: Faker::Name.first_name, 
 								  last_name: Faker::Name.last_name,
@@ -31,7 +32,7 @@ def create_companies(number)
 								  company_name: Faker::Company.name,
 								  situation: "growing",
 								  description: Faker::Lorem.paragraph,
-								  tag_list: "javascript, rails, css",
+								  tag_list: tags.sample(rand(1..3)),
 								  password: "test1234",
     							  password_confirmation: "test1234")}
 	companies
@@ -49,7 +50,7 @@ def create_admin(number)
 	admin
 end
 
-def create_job_posts(number, company)
+def create_job_posts(number, company, tags)
 	number.times {|n| JobPost.create( company_id: company.id,
     								company_type: "User",
     								description: Faker::Lorem.paragraph,
@@ -57,10 +58,12 @@ def create_job_posts(number, company)
     								salary: Faker::Number.number(6),
     								position: Faker::Name.title,
     								contract_type: Faker::Lorem.word,
-    								tag_list: "javascript, rails, css")}
+    								tag_list: tags.sample(rand(1..3)))}
 end
 
-students = create_students(3)
-companies = create_companies(3)
+my_tags = ["javascript", "rails", "css", "jquery", "node", "photoshop"]
+
+students = create_students(3, my_tags)
+companies = create_companies(3, my_tags)
 admin = create_admin(1)
-job_posts = companies.each{|company| create_job_posts(3, company)}
+job_posts = companies.each{|company| create_job_posts(3, company, my_tags)}

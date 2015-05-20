@@ -24,7 +24,20 @@ class JobPostsController < ApplicationController
  		else
 			render 'new', status: 422
 		end
-		
+	end
+	def edit
+		@company = User.find_by_id(params[:company_id])
+		@job_post = @company.job_posts.find_by_id(params[:id])
+	end
+
+	def update
+		@company = User.find_by_id(params[:company_id])
+		@job_post = @company.job_posts.find_by_id(params[:id])
+		if @job_post.update job_post_params
+			redirect_to company_job_post_path(@company, @job_post)
+		else
+			render "edit", status: 422
+		end
 	end
 
 	private
