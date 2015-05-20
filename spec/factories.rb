@@ -1,6 +1,8 @@
 require 'faker'
 
 FactoryGirl.define do
+  tags = ["javascript", "rails", "css", "jquery", "node", "photoshop"]
+
   factory :student, class: User do |f|
     f.role "student"
     f.first_name { Faker::Name.first_name }
@@ -8,6 +10,7 @@ FactoryGirl.define do
     f.email { "#{first_name}#{last_name}@nightswatch.com".downcase }
     f.location Faker::Address.city
     f.searching false
+    f.tag_list {tags.sample(rand(1..3))}
     f.password "test1234"
     f.password_confirmation "test1234"
   end
@@ -19,6 +22,7 @@ FactoryGirl.define do
     f.email { "#{first_name}#{last_name}@trueking.com".downcase }
     f.location Faker::Address.city
     f.searching false
+    f.tag_list {tags.sample(rand(1..3))}
     f.password "test1234"
     f.password_confirmation "test1234"
   end
@@ -52,12 +56,7 @@ FactoryGirl.define do
     f.role "singer"
     f.searching nil
   end
-end
 
-
-
-
-FactoryGirl.define do
   factory :job_post do |f|
     f.company_id 4
     f.company_type "User"
@@ -66,6 +65,7 @@ FactoryGirl.define do
     f.salary {Faker::Number.number(6)}
     f.position {Faker::Name.title}
     f.contract_type {Faker::Lorem.word}
+    f.tag_list {tags.sample(rand(1..3))}
   end
 
   factory :invalid_job_post, parent: :job_post do |f|

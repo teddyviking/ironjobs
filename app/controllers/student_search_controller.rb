@@ -1,5 +1,10 @@
 class StudentSearchController < ApplicationController
 	def index
-		@students = User.students
+		if params[:query]
+			tags = params[:query].split(",")
+			@students = User.students.tagged_with(tags)
+		else
+			@students = User.students
+		end
 	end
 end

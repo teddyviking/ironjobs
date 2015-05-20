@@ -32,7 +32,7 @@ def create_companies(number, tags)
 								  company_name: Faker::Company.name,
 								  situation: "growing",
 								  description: Faker::Lorem.paragraph,
-								  tag_list: tags.sample(rand(1..3)),
+								  tag_list: tags.sample(rand(2..5)),
 								  password: "test1234",
     							  password_confirmation: "test1234")}
 	companies

@@ -1,7 +1,8 @@
 <h1>Search students</h1>
-
+	<%= render 'form' %>
 <ul>
 	<% @students.each do |student| %>
-		<li> <%= student.name %> </li>
+		<li> <%= student.name %> </br>
+			tags: <%= student.tag_list %></li>
 	<% end %>
 </ul>
