@@ -29,19 +29,24 @@ feature 'Company searches students' do
   end
 
   scenario 'Filtering by two tags separeted by ", "' do
+  	@students.last.tag_list.add(['parrot', 'strawberry'])
+  	@students.last.save
+
   	visit student_search_path
 
-  	fill_in('query', :with => 'node, javascript')
+  	fill_in('query', :with => 'parrot, strawberry')
   	click_on('Search')
 
-  	
-    expect(first('li')).to have_content('node')
-	expect(first('li')).to have_content('javascript')
- 
-  
+    expect(first('li')).to have_content('parrot')
+	expect(first('li')).to have_content('strawberry')
   end
 
-  # scenario 'Finding no results when filtering' do
+  scenario 'Finding no results when filtering' do
+  	visit student_search_path
+  	
+  	fill_in('query', :with => 'nocilla, pegamento')
+  	click_on('Search')
 
-  # end
+  	expect(page).to have_content("No student matches your search. Try again, please.")
+  end
 end
