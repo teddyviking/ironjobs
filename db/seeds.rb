@@ -63,7 +63,7 @@ end
 
 my_tags = ["javascript", "rails", "css", "jquery", "node", "photoshop"]
 
-students = create_students(3, my_tags)
+students = create_students(5, my_tags)
 companies = create_companies(3, my_tags)
 admin = create_admin(1)
 job_posts = companies.each{|company| create_job_posts(3, company, my_tags)}
