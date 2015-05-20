@@ -27,6 +27,9 @@ def create_companies(number)
 								  email: Faker::Internet.email,
 								  role: "company",
 								  searching: false,
+								  company_name: Faker::Company.name,
+								  situation: "growing",
+								  description: Faker::Lorem.paragraph,
 								  password: "test1234",
     							  password_confirmation: "test1234")}
 	companies
