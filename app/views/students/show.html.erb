@@ -1,5 +1,11 @@
 <h1><%= @student.name %></h1>
+<% if @student.searching %>
+	<p>I'm searching!</p>
+<% end %>
 
-<p><%= @student.searching %></p>
+<% if @student.tag_list %>
+	<h2>Tags</h2>
+	<p><%= @student.tag_list %></p>
+<% end %>
 
 <p><%= link_to "Edit your profile", edit_student_path(@student) %></p>

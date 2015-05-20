@@ -2,7 +2,7 @@
 
 <ul>
 	<% @job_posts. each do |post| %>
-		<li> <%= post.position + " at " + post.location %></li>
+		<li> <%= link_to post.position + " at " + post.location, company_job_post_path(@company, post) %></li>
 
 	<% end %>
 

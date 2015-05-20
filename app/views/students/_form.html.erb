@@ -56,6 +56,10 @@
     <%= f.label :searching %><br>
     <%= f.check_box :searching%>
   </div>
+  <div class="field">
+    <%= f.label :tags %><br>
+    <%= f.text_field :tag_list %>
+  </div>
  
   <div class="actions">
     <%= f.submit (@student.new_record? ? 'Create student' : 'Update your profile') %>

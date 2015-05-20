@@ -14,6 +14,7 @@ def create_students(number)
 								  email: Faker::Internet.email,
 								  role: "student",
 								  searching: false,
+								  tag_list: "javascript, rails, css",
 								  password: "test1234",
     							  password_confirmation: "test1234")}
 	students
@@ -30,6 +31,7 @@ def create_companies(number)
 								  company_name: Faker::Company.name,
 								  situation: "growing",
 								  description: Faker::Lorem.paragraph,
+								  tag_list: "javascript, rails, css",
 								  password: "test1234",
     							  password_confirmation: "test1234")}
 	companies
@@ -54,7 +56,8 @@ def create_job_posts(number, company)
     								location: Faker::Address.city,
     								salary: Faker::Number.number(6),
     								position: Faker::Name.title,
-    								contract_type: Faker::Lorem.word )}
+    								contract_type: Faker::Lorem.word,
+    								tag_list: "javascript, rails, css")}
 end
 
 students = create_students(3)

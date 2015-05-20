@@ -1,8 +1,13 @@
 <h1><%= @company.name %></h1>
 
 <ul>
-	<% @company.attributes.each do |attr|%>
-		<li><%= attr %></li>
+	<% @company.attributes.each do |attribute|%>
+		<li><%= attribute %></li>
 	<%end %>
 
 </ul>
+
+<% if @company.tag_list %>
+	<h2>Tags</h2>
+	<p><%= @company.tag_list %></p>
+<% end %>

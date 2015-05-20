@@ -1,3 +1,10 @@
 <h1><%= @job_post.position + " at " + @job_post.location %></h1>
 
-<p><%= @company.name %></p>
+<p>Company: <%= @company.company_name %></p>
+
+
+<% if @job_post.tag_list %>
+	<h2>Tags</h2>
+	<p><%= @job_post.tag_list %> </p>
+
+<% end %>
