@@ -31,7 +31,8 @@ Rails.application.routes.draw do
   # patch '/companies/:company_id/job_posts/:id' => "job_posts#update" 
 
 
-  get '/job_search' => "job_search#index"
+  get '/job_search' => "job_search#index", as: :job_search
+  get '/student_search' => "student_search#index", as: :student_search
 
 
   # The priority is based upon order of creation: first created -> highest priority.
