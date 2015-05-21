@@ -6,7 +6,11 @@ class JobPostsController < ApplicationController
 	end
 
 	def show
-		@company = User.find_by_id(params[:company_id])
+		if !@company = User.find_by_id(params[:company_id])
+			@companies = User.companies
+			flash.now[alert] = "Company does not exist"
+			render 'companies#index'
+		end
 		@job_post = @company.job_posts.find_by_id(params[:id])
 	end
 
