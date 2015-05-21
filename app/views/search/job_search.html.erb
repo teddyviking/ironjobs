@@ -2,7 +2,7 @@
 
 <%= render 'form' %>
 
-<ul>
+<ul class="post-search">
 	<% @job_posts.each do |post| %>
 		<li><%= post.position %> <br>
 			tags: <%= post.tag_list %>

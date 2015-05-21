@@ -67,3 +67,23 @@ students = create_students(10, my_tags)
 companies = create_companies(3, my_tags)
 admin = create_admin(1)
 job_posts = companies.each{|company| create_job_posts(3, company, my_tags)}
+
+my_student = User.create(first_name: "rafa-estudiante",
+									last_name: "tejado",
+									email: "tejado_student@gmail.com",
+									password: "test1234",
+									password_confirmation: "test1234",
+									searching: false,
+									location: Faker::Address.city,
+									tag_list: my_tags.sample(rand(2..5)),
+									role: "student")
+my_company = User.create(first_name: "rafa-company",
+									last_name: "tejado",
+									email: "tejado_company@gmail.com",
+									password: "test1234",
+									password_confirmation: "test1234",
+									searching: false,
+									location: Faker::Address.city,
+									description: Faker::Lorem.paragraph,
+									tag_list: my_tags.sample(rand(2..5)),
+									role: "company")

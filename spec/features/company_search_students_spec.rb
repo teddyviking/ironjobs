@@ -13,7 +13,7 @@ feature 'Company searches students' do
     	expect(page).to have_content(student.name)
     end
 
-    expect(all('li').count).to eq(20)
+    expect(find('.post-search')).to have_selector('li', count: 20)
 
   end
 
@@ -40,8 +40,9 @@ feature 'Company searches students' do
   	fill_in('query', :with => 'parrot, strawberry')
   	click_on('Search')
 
-    expect(first('li')).to have_content('parrot')
-	expect(first('li')).to have_content('strawberry')
+    expect(find('.post-search')).to have_content('parrot')
+    expect(find('.post-search')).to have_content('strawberry')
+
   end
 
   scenario 'Finding no results when filtering' do

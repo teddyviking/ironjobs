@@ -7,9 +7,19 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+    
+
+    <% if user_signed_in? %>
+      <li>You are signed as <%= current_user.first_name.capitalize %></li>
+      <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+    <% else %>
+      <li><%= link_to "Acceder", new_user_session_path %></li>
+    <% end %>
+
+
 
 	<% flash.each do |name, msg| %>
-		<p> <%= msg %> </p>
+		<section> <%= msg %> </section>
 	<% end %>
 
 <%= yield %>
