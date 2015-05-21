@@ -1,4 +1,4 @@
-<%= form_for([@company, @job_post], url: (@job_post.new_record? ? company_job_posts_path(@company) : company_job_post_path(@company, @job_post))) do |f| %>
+<%= form_for([@company, @job_post], url: dynamic_job_post_form_route(@company, @job_post)) do |f| %>
 
     
 
