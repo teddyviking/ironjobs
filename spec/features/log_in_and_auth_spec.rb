@@ -17,6 +17,7 @@ feature 'Log-in and authorization' do
 
     expect(current_path).to eq(students_path)
     expect(page).to have_content("Not authorized to edit this profile")
-
   end
+
+  
 end

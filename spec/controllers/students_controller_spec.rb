@@ -7,7 +7,12 @@ RSpec.describe StudentsController, type: :controller do
 
 
   	describe "GET #index" do
-  		before(:each) {get :index}
+  		before(:each) do 
+  			company = create(:company)
+  			sign_in(company)
+  			get :index
+  		end
+  		
 
 		it "responds successfully with an HTTP 200 status code" do
 	      	expect(response).to be_success
@@ -31,7 +36,11 @@ RSpec.describe StudentsController, type: :controller do
 
 	describe "GET #show" do
 		context "when the student doesn't exit" do
-			before(:each) {	get :show,{ id: "no_id" } }
+			before(:each) do
+				company = create(:company)
+  				sign_in(company)
+				get :show,{ id: "no_id" }
+			end
 
 			it "responds with an HTTP 301 status code" do
 				expect(response).to have_http_status(301)
