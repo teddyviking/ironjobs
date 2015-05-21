@@ -2,7 +2,7 @@
 	<%= render 'form' %>
 <ul class="post-search">
 	<% @students.each do |student| %>
-		<li> <%= student.name %> </br>
+		<li> <%= link_to student.name, student_path(student) %> </br>
 			tags: <%= student.tag_list %></li>
 	<% end %>
 </ul>

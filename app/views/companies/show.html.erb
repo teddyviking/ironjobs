@@ -2,7 +2,9 @@
 
 <ul>
 	<% @company.attributes.each do |attribute|%>
-		<li><%= attribute %></li>
+		<% if attribute[1]%>
+		<li><%= attribute[0].to_s + ": " + attribute[1].to_s %></li>
+		<% end %>
 	<%end %>
 
 </ul>
@@ -10,4 +12,14 @@
 <% if @company.tag_list %>
 	<h2>Tags</h2>
 	<p><%= @company.tag_list %></p>
+<% end %>
+
+<% if @company.job_posts %>
+	<h2>Job posts</h2>
+	<ul><% @company.job_posts.each do |post| %>
+		<li><%= link_to post.position,  company_job_post_path(@company, post) %></li>
+
+		<% end %>
+	</ul>
+
 <% end %>

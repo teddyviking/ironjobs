@@ -2,7 +2,7 @@
 	<%= render 'form' %>
 <ul class="post-search">
 	<% @companies.each do |company| %>
-		<li> <%= company.company_name %> </br>
+		<li> <%= link_to company.company_name, company_path(company)%> </br>
 			tags: <%= company.tag_list %></li>
 	<% end %>
 </ul>

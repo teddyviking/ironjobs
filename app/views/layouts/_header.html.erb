@@ -1,0 +1,27 @@
+ <div class="container">
+ 
+
+    <div style="display: inline; float: left">
+      <ul>
+        <li><%= link_to "Home", root_path %></li>
+        <% if user_signed_in? %>
+              <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+              <li>You are signed as <%= current_user.first_name.capitalize %></li>
+          <% else %>
+              <li><%= link_to "Sign in", new_user_session_path %></li>
+        <% end %>    
+      </ul>
+    </div>
+
+    <div style="display: inline; float: right">
+      <ul >
+       
+        <% if user_signed_in? %>
+          <li><%= link_to "Search Job Post", job_search_path %></li>
+          <li><%= link_to "Search Student", student_search_path %></li>
+          <li><%= link_to "Search Company", company_search_path %></li>
+        <% end %>    
+      </ul>
+    </div>
+    <div style="clear: both"></div>
+  </div>

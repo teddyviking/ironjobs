@@ -4,7 +4,7 @@
 
 <ul class="post-search">
 	<% @job_posts.each do |post| %>
-		<li><%= post.position %> <br>
+		<li><%= link_to post.position,  company_job_post_path(post.company, post) %> <br>
 			tags: <%= post.tag_list %>
 		</li>
 	<% end %>
