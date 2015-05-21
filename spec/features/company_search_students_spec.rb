@@ -18,10 +18,13 @@ feature 'Company searches students' do
   end
 
   scenario 'Filtering by one tag' do
-  	visit student_search_path
+  	@students.last.tag_list.add('node')
+    @students.last.save
 
-  	fill_in('query', :with => 'node')
+    visit student_search_path
+  	fill_in(:query, :with => 'node')
   	click_on('Search')
+
 
   	expect(page).to have_content('node')
 
