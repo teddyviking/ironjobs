@@ -9,4 +9,9 @@ module SearchHelper
 			company_search_path	
 		end
 	end
+
+
+	def get_tags
+		params[:query].split(", ")
+	end
 end

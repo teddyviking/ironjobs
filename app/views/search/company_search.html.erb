@@ -1,0 +1,8 @@
+<h1>Search companies</h1>
+	<%= render 'form' %>
+<ul>
+	<% @companies.each do |company| %>
+		<li> <%= company.company_name %> </br>
+			tags: <%= company.tag_list %></li>
+	<% end %>
+</ul>
