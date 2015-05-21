@@ -47,6 +47,18 @@ feature 'Log-in and authorization' do
     expect(page).to have_content("Not authorized to create a job post")
   end
 
+  scenario 'company tries to apply to a job post' do
+    login_as(@company, :scope => :user)
+    job_post = @company.job_posts.create(attributes_for(:job_post))
+
+    visit company_job_post_path(@company, job_post)
+
+    click_on('Apply!')
+
+    expect(current_path).to eq(company_job_posts_path(@company))
+    expect(page).to have_content("Not authorized to apply to a job post")
+  end
+
 
 
 
