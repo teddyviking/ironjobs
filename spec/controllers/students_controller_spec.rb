@@ -49,7 +49,10 @@ RSpec.describe StudentsController, type: :controller do
 
 		context "when the student exists" do
 			before(:each) do 
+				
 				@student = create_student
+				
+				sign_in
 
 				get :show, id: @student
 			end
@@ -74,6 +77,8 @@ RSpec.describe StudentsController, type: :controller do
 		context "when the student is invalid" do
 			before(:each) do
 				@student = create_student
+				
+				sign_in(@student)
 
 				patch :update, {id: @student.id, user: (attributes_for(:invalid_student))}
 			end
@@ -89,6 +94,8 @@ RSpec.describe StudentsController, type: :controller do
 		context "when the student is valid" do
 			before(:each) do
 				@student = create_student
+
+				sign_in(@student)
 
 				patch :update, {id: @student.id, user: (attributes_for(:complete_student))}
 			end
@@ -106,12 +113,16 @@ RSpec.describe StudentsController, type: :controller do
 			it "updates default searching to true" do
 				student = create_student
 
+				sign_in(student)
+
 				patch :update, {id: student.id, user: ({searching: true}) }
 
 				expect(assigns(:student).searching).to eq(true)
 			end
 			it "updates from true to false" do
 				student = create(:student, searching: true)
+
+				sign_in(student)
 
 				patch :update, {id: student.id, user: ({searching: false}) }
 				expect(assigns(:student).searching).to eq(false)

@@ -78,6 +78,7 @@ my_student = User.create(first_name: "rafa-estudiante",
 									tag_list: my_tags.sample(rand(2..5)),
 									role: "student")
 my_company = User.create(first_name: "rafa-company",
+									company_name: "rafa-company",
 									last_name: "tejado",
 									email: "tejado_company@gmail.com",
 									password: "test1234",
