@@ -8,6 +8,7 @@ feature 'Student applications' do
     @student = create(:student)
   end
   scenario 'student applies to a job post' do
+    login_as(@student, :scope => :user)
     visit company_job_post_path(@company, @job_post)
 
     click_on('Apply!')

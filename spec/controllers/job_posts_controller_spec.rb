@@ -6,6 +6,7 @@ RSpec.describe JobPostsController, type: :controller do
 	describe "GET #index" do
 		
 		before(:each) do 
+			sign_in
 			@company = create(:company)
 			get :index,{ company_id: @company.id }
 		end
@@ -32,7 +33,9 @@ RSpec.describe JobPostsController, type: :controller do
 
 
 	describe "POST #create" do
-		before(:each) {@company= create(:company)}
+		before(:each) do 
+			sign_in(@company= create(:company))
+		end
 		context "when creating an invalid job post" do
 			before(:each) { post :create,{company_id: @company.id, job_post:(attributes_for(:invalid_job_post))}}
 			it "renders the new template" do
@@ -60,7 +63,8 @@ RSpec.describe JobPostsController, type: :controller do
 
 		context "when trying to update invalid attributes" do
 			before(:each) do
-				@company = create(:company)
+				
+				sign_in(@company = create(:company))
 				@job_post = create(:job_post, company_id: @company.id)
 
 				patch :update, {company_id: @company.id, id: @job_post.id, job_post:(attributes_for(:invalid_job_post))}
@@ -75,7 +79,7 @@ RSpec.describe JobPostsController, type: :controller do
 
 		context "when trying to update valid attributes" do
 			before(:each) do
-				@company = create(:company)
+				sign_in(@company = create(:company))
 				@job_post = create(:job_post, company_id: @company.id)
 
 				patch :update, {company_id: @company.id, id: @job_post.id, job_post:({salary: 20000})}

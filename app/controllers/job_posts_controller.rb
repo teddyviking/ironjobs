@@ -1,4 +1,8 @@
 class JobPostsController < ApplicationController
+	before_action :correct_user, only: [:edit, :update, :destroy]
+	before_action :is_company, only: [:new, :create]
+	before_action :authenticate_user!
+
 
 	def index
 		@company = User.find_by_id(params[:company_id])
@@ -49,5 +53,15 @@ class JobPostsController < ApplicationController
 
 	def job_post_params
 		params.require(:job_post).permit(:description, :location, :salary, :position, :contract_type, :tag_list)
+	end
+
+	def correct_user
+		@user = User.find_by(id: params[:company_id])
+		redirect_to job_search_path, notice: "Not authorized to edit this job post" if @user != current_user
+	end
+
+	def is_company
+		@user = User.find_by(id: current_user.id)
+		redirect_to job_search_path, notice: "Not authorized to create a job post" if @user.role != "company"
 	end
 end
