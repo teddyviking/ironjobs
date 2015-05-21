@@ -8,3 +8,5 @@
 	<p><%= @job_post.tag_list %> </p>
 
 <% end %>
+
+<%= button_to "Apply!", student_applications_path(@user), params: { job_post_id: @job_post.id }  %>

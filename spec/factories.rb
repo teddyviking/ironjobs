@@ -17,10 +17,12 @@ FactoryGirl.define do
 
   factory :company, class: User do |f|
   	f.role "company"
+    f.company_name {Faker::Company.name}
   	f.first_name {Faker::Name.first_name}
     f.last_name  {Faker::Name.last_name}
     f.email { "#{first_name}#{last_name}@trueking.com".downcase }
     f.location Faker::Address.city
+    f.situation "growing"
     f.searching false
     f.tag_list {tags.sample(rand(1..3))}
     f.password "test1234"

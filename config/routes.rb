@@ -14,21 +14,13 @@ Rails.application.routes.draw do
   patch '/students/:id' => "students#update"
 
 
+  get '/students/:id/applications' => "job_applications#index", as: :student_applications
+  post '/students/:id/applications' => "job_applications#create"
+
+
   resources :companies do
     resources :job_posts
   end
-
-
-  # get '/companies' => "companies#index", as: :companies
-  # get '/companies/:id' => "companies#show", as: :company
-
-
-  # get '/companies/:company_id/job_posts' => "job_posts#index", as: :company_job_posts
-  # get '/companies/:company_id/job_posts/new' => "job_posts#new", as: :new_company_job_post
-  # get '/companies/:company_id/job_posts/:id' => "job_posts#show", as: :company_job_post
-  # get '/companies/:company_id/job_posts/:id/edit' => "job_posts#edit", as: :edit_company_job_post
-  # post '/companies/:company_id/job_posts' => "job_posts#create" 
-  # patch '/companies/:company_id/job_posts/:id' => "job_posts#update" 
 
 
   get '/job_search' => "search#job_search", as: :job_search
