@@ -55,9 +55,17 @@ RSpec.describe User, type: :model do
   	end
 
     context "is a company" do
-      it "add pending confirmation before saving" do
-        user = create(:company)
-        expect(user.confirmed).to eq(false)
+      it "add pending confirmation before saving a new company" do
+        company = create(:company)
+        expect(company.confirmed).to eq(false)
+      end
+
+      it "do not add pending confirmation to an already existing company" do
+        company = create(:company)
+        expect(company.confirmed).to eq(false)
+        company.update(confirmed: true)
+        company.update(twitter: "no")
+        expect(company.confirmed).to eq(true)
       end
     end
 

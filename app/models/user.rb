@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
 	end
 
 	def add_pending_confirmation
-		self.confirmed = false 
+		self.confirmed = false if self.new_record?
 		self
 	end
 

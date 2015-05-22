@@ -3,7 +3,7 @@
 <section>
 	<h2>Notifications</h2>
 		<ul class="notifications">
-			<% if @pending_companies %>
+			<% if !@pending_companies.empty? %>
 				<li>There is <%= @pending_companies.count %> company confirmation request</li>
 			<% else %>
 				<li>Nothing pending</li>
@@ -12,6 +12,11 @@
 </section>
 <section>
 	<h2>Companies waiting for confirmation</h2>
+	<ul>
+		<% @pending_companies.each do |company| %>
+			<li><%= link_to company.company_name, company_path(company) %></li>
+		<% end %>
+	</ul>
 
 </section>
 

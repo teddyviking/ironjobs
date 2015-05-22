@@ -6,6 +6,7 @@ feature 'Admin dashboard' do
 
   	@admin = create(:admin)
   	@companies = create_list(:company, 10)
+  	@companies.map{|company| company.update(confirmed: true)}
   end
 
   scenario 'user logs in as an admin' do
@@ -31,23 +32,23 @@ feature 'Admin dashboard' do
   end
 
   scenario 'there is a company waiting for confirmation' do
-	company = @companies.first
+	new_company = create(:company)
 	login_as(@admin, :scope => :user)
 
 
   	visit dashboard_path
 
   	expect(page).to have_content("There is 1 company confirmation request")
-	expect(page).to have_content(:link_or_button, company.company_name)
+	expect(page).to have_content(:link_or_button, new_company.company_name)
 
-	click_on(company.company_name)
+	click_on(new_company.company_name)
 
-	expect(current_path).to eq(company_path(company))
+	expect(current_path).to eq(company_path(new_company))
 
 	click_on("Confirm company")
 
 	expect(current_path).to eq(dashboard_path)
-	expect(page).to have_content(company.company_name + "is now active")
+	expect(page).to have_content(new_company.company_name + " is now active")
 	expect(page).to have_content("Nothing pending")
 	expect(find('.notifications')).to have_selector('li', count: 1)
   end

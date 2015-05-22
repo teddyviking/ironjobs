@@ -9,6 +9,10 @@ Rails.application.routes.draw do
 
   get '/dashboard' => "dashboard#index", as: :dashboard
 
+
+  get '/company_confirmation/:id' => "admin#company_confirmation", as: :company_confirmation
+  post '/company_confirmation/:id' => "admin#company_confirmation"
+
   get '/students' => "students#index", as: :students
   get '/students/:id' => "students#show", as: :student
   get '/students/:id/edit' => "students#edit", as: :edit_student
