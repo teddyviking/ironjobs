@@ -1,9 +1,13 @@
-<h1>Welcome <%= @admin.first_name %></h1>
+<h1>Welcome <%= current_user.first_name %></h1>
 
 <section>
 	<h2>Notifications</h2>
 		<ul class="notifications">
-			<li>Nothing pending</li>
+			<% if @pending_companies %>
+				<li>There is <%= @pending_companies.count %> company confirmation request</li>
+			<% else %>
+				<li>Nothing pending</li>
+			<% end %>
 		</ul>
 </section>
 <section>

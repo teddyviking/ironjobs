@@ -30,21 +30,25 @@ feature 'Admin dashboard' do
 
   end
 
- #  scenario 'there is a company waiting for confirmation' do
-	# company = @companies.first
+  scenario 'there is a company waiting for confirmation' do
+	company = @companies.first
+	login_as(@admin, :scope => :user)
 
- #  	visit dashboard_path
 
- #  	expect(page).to have_content("There is 1 company confirmation request")
-	# expect(page).to have_content(:link_or_button, company.company_name)
+  	visit dashboard_path
 
-	# click_on(company.company_name)
+  	expect(page).to have_content("There is 1 company confirmation request")
+	expect(page).to have_content(:link_or_button, company.company_name)
 
-	# expect(current_path).to eq(company_path(company))
+	click_on(company.company_name)
 
-	# click_on("Confirm company")
+	expect(current_path).to eq(company_path(company))
 
-	# expect(current_path).to eq(dashboard_path)
-	# expect(page).to have_content(company.company_name + "is now active")
- #  end
+	click_on("Confirm company")
+
+	expect(current_path).to eq(dashboard_path)
+	expect(page).to have_content(company.company_name + "is now active")
+	expect(page).to have_content("Nothing pending")
+	expect(find('.notifications')).to have_selector('li', count: 1)
+  end
 end

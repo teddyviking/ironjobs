@@ -10,6 +10,7 @@ FactoryGirl.define do
     f.email { "#{first_name}#{last_name}@nightswatch.com".downcase }
     f.location Faker::Address.city
     f.searching false
+    f.confirmed true
     f.tag_list {tags.sample(rand(1..3))}
     f.password "test1234"
     f.password_confirmation "test1234"
@@ -24,6 +25,7 @@ FactoryGirl.define do
     f.location Faker::Address.city
     f.situation "growing"
     f.searching false
+    f.confirmed true
     f.tag_list {tags.sample(rand(1..3))}
     f.password "test1234"
     f.password_confirmation "test1234"
@@ -36,6 +38,7 @@ FactoryGirl.define do
     f.last_name  {Faker::Name.last_name}
     f.email { "#{first_name}#{last_name}@nightswatch.com".downcase }
     f.location {Faker::Address.city}
+    f.confirmed true
     f.password "test1234"
     f.password_confirmation "test1234"
   end

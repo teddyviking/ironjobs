@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  before_validation :add_pending_confirmation, if: :is_a_company?
+
   validates :first_name, :last_name, :email, :location, :role, presence: true
   validates :email, uniqueness: true
   validate :role_has_to_be_student_admin_or_company, :searching_is_present_in_students_and_companies
@@ -37,5 +39,14 @@ class User < ActiveRecord::Base
 		if role != "admin" && searching.nil?
 			errors.add(:searching, "must include searching status")
 		end
+	end
+
+	def add_pending_confirmation
+		self.confirmed = false 
+		self
+	end
+
+	def is_a_company?
+		self.role == "company"
 	end
 end

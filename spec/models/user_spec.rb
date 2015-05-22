@@ -7,7 +7,7 @@ RSpec.describe User, type: :model do
   	include UserHelpers
   	
   	it "has a valid factory" do 
-  		expect(create(:student)).to be_valid
+      expect(create(:student)).to be_valid
   		expect(create(:admin)).to be_valid
   		expect(create(:company)).to be_valid 		 
   	end 
@@ -53,6 +53,14 @@ RSpec.describe User, type: :model do
   		user.valid?
   		expect(user.errors[:searching].any?).to eq(true)
   	end
+
+    context "is a company" do
+      it "add pending confirmation before saving" do
+        user = create(:company)
+        expect(user.confirmed).to eq(false)
+      end
+    end
+
   end
 
 end
