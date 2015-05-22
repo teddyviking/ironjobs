@@ -1,6 +1,6 @@
 <h1><%= @job_post.position + " at " + @job_post.location %></h1>
 
-<p>Company: <%= link_to @company.company_name, company_path(@job_post.company) %></p>
+<p>Company: <%= link_to @job_post.company.company_name, company_path(@job_post.company) %></p>
 
 
 <% if @job_post.tag_list %>

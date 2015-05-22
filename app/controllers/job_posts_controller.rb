@@ -22,11 +22,11 @@ class JobPostsController < ApplicationController
 			end
 			
 		else
-			if !@company = User.confirmed_companies.find_by_id(params[:company_id])
-				@companies = User.companies
-				flash.now[alert] = "Company does not exist"
-				render 'companies#index'
-			end
+			# if !@company = User.confirmed_companies.find_by_id(params[:company_id])
+			# 	@companies = User.confirmed_companies
+			# 	flash.now[alert] = "Company does not exist"
+			# 	redirect_to job_search_path
+			# end
 			if !@job_post = JobPost.confirmed.find_by_id(params[:id])
 				flash[alert] = "Job post does not exist"
 				redirect_to job_search_path
