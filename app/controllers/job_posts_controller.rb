@@ -10,7 +10,6 @@ class JobPostsController < ApplicationController
 	end
 
 	def show
-		@user = User.students.first
 		if !@company = User.find_by_id(params[:company_id])
 			@companies = User.companies
 			flash.now[alert] = "Company does not exist"

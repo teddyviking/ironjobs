@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   get '/company_confirmation/:id' => "admin#company_confirmation", as: :company_confirmation
   post '/company_confirmation/:id' => "admin#company_confirmation"
+  get '/job_post_confirmation/:id' => "admin#job_post_confirmation", as: :job_post_confirmation
+  post '/job_post_confirmation/:id' => "admin#job_post_confirmation"
 
   get '/students' => "students#index", as: :students
   get '/students/:id' => "students#show", as: :student

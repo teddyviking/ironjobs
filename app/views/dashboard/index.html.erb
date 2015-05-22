@@ -3,10 +3,17 @@
 <section>
 	<h2>Notifications</h2>
 		<ul class="notifications">
+			
+			<% if @pending_companies.empty? && @pending_job_posts %>
+				<li>Nothing pending</li>
+			<% end %>
+
 			<% if !@pending_companies.empty? %>
 				<li> <%= @pending_companies.count %> company confirmation <%="request".pluralize%></li>
-			<% else %>
-				<li>Nothing pending</li>
+			<% end %>
+
+			<% if !@pending_job_posts.empty? %>
+				<li> <%= @pending_job_posts.count %> job post validation <%="request".pluralize%></li>
 			<% end %>
 		</ul>
 </section>
@@ -22,5 +29,9 @@
 
 <section>
 	<h2>Job Posts to validate</h2>
-
+	<ul>
+		<% @pending_job_posts.each do |post| %>
+			<li><%= link_to post.position + " by " + post.company.company_name,  company_job_post_path(post.company, post) %></li>
+		<% end %>
+	</ul>
 </section>

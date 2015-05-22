@@ -9,4 +9,9 @@
 
 <% end %>
 
-<%= button_to "Apply!", student_applications_path(@user), params: { job_post_id: @job_post.id }  %>
+<% if current_user.role == "student" %>
+	<%= button_to "Apply!", student_applications_path(current_user), params: { job_post_id: @job_post.id }  %>
+<% elsif current_user.role == "admin" && @job_post.confirmed == false %>
+	<%= button_to "Validate job post", job_post_confirmation_path(@job_post) %>
+
+<% end %>
