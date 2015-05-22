@@ -4,7 +4,7 @@
 	<h2>Notifications</h2>
 		<ul class="notifications">
 			<% if !@pending_companies.empty? %>
-				<li>There is <%= @pending_companies.count %> company confirmation request</li>
+				<li> <%= @pending_companies.count %> company confirmation <%="request".pluralize%></li>
 			<% else %>
 				<li>Nothing pending</li>
 			<% end %>

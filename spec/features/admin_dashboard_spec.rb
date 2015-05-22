@@ -38,7 +38,7 @@ feature 'Admin dashboard' do
 
   	visit dashboard_path
 
-  	expect(page).to have_content("There is 1 company confirmation request")
+  	expect(page).to have_content("1 company confirmation request")
 	expect(page).to have_content(:link_or_button, new_company.company_name)
 
 	click_on(new_company.company_name)
@@ -51,5 +51,16 @@ feature 'Admin dashboard' do
 	expect(page).to have_content(new_company.company_name + " is now active")
 	expect(page).to have_content("Nothing pending")
 	expect(find('.notifications')).to have_selector('li', count: 1)
+  end
+
+  scenario 'there are multiple companies waiting for confirmation' do
+  	new_companies = create_list(:company, 2)
+  	login_as(@admin, :scope => :user)
+
+  	visit dashboard_path
+
+  	expect(page).to have_content("2 company confirmation requests")
+	expect(page).to have_content(:link_or_button, new_companies[0].company_name)
+	expect(page).to have_content(:link_or_button, new_companies[1].company_name)
   end
 end
