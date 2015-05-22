@@ -10,7 +10,13 @@ class JobApplicationsController < ApplicationController
 	def create
 		@student = User.students.find_by(id: params[:id])
 		@job_post = JobPost.find_by_id(params[:job_post_id])
-		@applied_job_post = @student.applied_job_posts << @job_post
+
+		if @student.applied_job_posts.include?(@job_post)
+			flash[alert] = "You have already applied to this job post"
+		else
+			@applied_job_post = @student.applied_job_posts << @job_post
+			flash[notice] = "Your application has been sent"
+		end
 		redirect_to student_applications_path(@student)
 	end
 

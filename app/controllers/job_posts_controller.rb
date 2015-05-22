@@ -16,7 +16,10 @@ class JobPostsController < ApplicationController
 			flash.now[alert] = "Company does not exist"
 			render 'companies#index'
 		end
-		@job_post = @company.job_posts.find_by_id(params[:id])
+		if !@job_post = @company.job_posts.find_by_id(params[:id])
+			flash[alert] = "Job post does not exist"
+			redirect_to job_search_path
+		end
 	end
 
 	def new
