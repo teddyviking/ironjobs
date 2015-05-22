@@ -91,6 +91,20 @@ feature 'Admin dashboard' do
 
   	end
 
+  	scenario 'there are multiple job posts waiting for validation' do
+  		new_job_posts = []
+  		2.times{new_job_posts << @companies.first.job_posts.create(attributes_for(:job_post))}
+	  	login_as(@admin, :scope => :user)
+
+	  	visit dashboard_path
+
+	  	expect(page).to have_content("2 job post validation request")
+		expect(page).to have_content(:link_or_button, new_job_posts[0].position + " by " + new_job_posts[0].company.company_name)
+		expect(page).to have_content(:link_or_button, new_job_posts[0].position + " by " + new_job_posts[0].company.company_name)
+
+
+  	end
+
   end
 
   
