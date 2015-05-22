@@ -4,6 +4,7 @@ require 'rails_helper'
 feature 'Log-in and authorization' do
   background do
     @company = create(:company)
+    @company.update(confirmed: true)
     @student = create(:student)
   end
   scenario 'invalid user tries to log in' do

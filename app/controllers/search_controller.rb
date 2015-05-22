@@ -12,10 +12,10 @@ class SearchController < ApplicationController
 	def job_search
 		if params[:query]
 			tags = get_tags
-			@job_posts = JobPost.confirmed_job_posts.tagged_with(tags)
+			@job_posts = JobPost.confirmed.tagged_with(tags)
 			flash.now[:alert] = "No job post matches your search. Try again, please." if @job_posts.empty?
 		else
-			@job_posts = JobPost.confirmed_job_posts.all
+			@job_posts = JobPost.confirmed
 		end
 	end
 

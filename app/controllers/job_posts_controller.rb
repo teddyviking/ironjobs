@@ -10,14 +10,27 @@ class JobPostsController < ApplicationController
 	end
 
 	def show
-		if !@company = User.find_by_id(params[:company_id])
-			@companies = User.companies
-			flash.now[alert] = "Company does not exist"
-			render 'companies#index'
-		end
-		if !@job_post = @company.job_posts.find_by_id(params[:id])
-			flash[alert] = "Job post does not exist"
-			redirect_to job_search_path
+		if current_user.role == "admin"
+			if !@company = User.companies.find_by_id(params[:company_id])
+				@companies = User.companies
+				flash.now[alert] = "Company does not exist"
+				render 'companies#index'
+			end
+			if !@job_post = JobPost.find_by_id(params[:id])
+				flash[alert] = "Job post does not exist"
+				redirect_to job_search_path
+			end
+			
+		else
+			if !@company = User.confirmed_companies.find_by_id(params[:company_id])
+				@companies = User.companies
+				flash.now[alert] = "Company does not exist"
+				render 'companies#index'
+			end
+			if !@job_post = JobPost.confirmed.find_by_id(params[:id])
+				flash[alert] = "Job post does not exist"
+				redirect_to job_search_path
+			end
 		end
 	end
 

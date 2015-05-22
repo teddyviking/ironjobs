@@ -4,7 +4,9 @@ require 'rails_helper'
 feature 'Student applications' do
   background do
   	@company = create(:company)
+    @company.update(confirmed: true)
     @job_post = @company.job_posts.create(attributes_for(:job_post))
+    @job_post.update(confirmed: true)
     @student = create(:student)
   end
   scenario 'student applies to a job post' do

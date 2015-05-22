@@ -9,7 +9,7 @@ class JobApplicationsController < ApplicationController
 
 	def create
 		@student = User.students.find_by(id: params[:id])
-		@job_post = JobPost.find_by_id(params[:job_post_id])
+		@job_post = JobPost.confirmed.find_by_id(params[:job_post_id])
 
 		if @student.applied_job_posts.include?(@job_post)
 			flash[alert] = "You have already applied to this job post"

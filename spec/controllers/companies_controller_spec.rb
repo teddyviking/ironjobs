@@ -4,7 +4,10 @@ RSpec.describe CompaniesController, type: :controller do
 	let(:create_company) {create(:company)}
 
 	describe "GET #index" do
-		before(:each) {get :index}
+		before(:each) do 
+			sign_in(create(:admin))
+			get :index
+		end
 
 		it "responds successfully with an HTTP 200 status code" do
 	      	expect(response).to be_success
@@ -26,6 +29,7 @@ RSpec.describe CompaniesController, type: :controller do
 	end
 
 	describe "GET #show" do
+		before(:each) {sign_in(create(:admin))}
 		context "when the company doesn't exist" do
 			before(:each) {	get :show,{ id: "no_id" } }
 
@@ -46,7 +50,8 @@ RSpec.describe CompaniesController, type: :controller do
 		context "when the company exist" do
 			before(:each) do	
 				@company = create_company
-
+				@company.update(confirmed: true)
+				
 				get :show,{ id: @company.id }
 			end
 
