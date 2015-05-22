@@ -101,9 +101,21 @@ feature 'Admin dashboard' do
 	  	expect(page).to have_content("2 job post validation request")
 		expect(page).to have_content(:link_or_button, new_job_posts[0].position + " by " + new_job_posts[0].company.company_name)
 		expect(page).to have_content(:link_or_button, new_job_posts[0].position + " by " + new_job_posts[0].company.company_name)
-
-
   	end
+
+  end
+
+  context 'displaying only confirmed companies/job posts' do
+
+  	scenario 'student is searching companies' do
+  		new_company = create(:company)
+  		login_as(create(:student), :scope => :user)
+
+  		visit company_search_path
+
+  		expect(source).not_to include(company_path(new_company))
+  	end
+
 
   end
 

@@ -22,10 +22,10 @@ class SearchController < ApplicationController
 	def company_search
 		if params[:query]
 			tags = get_tags
-			@companies = User.companies.tagged_with(tags)
+			@companies = User.confirmed_companies.tagged_with(tags)
 			flash.now[:alert] = "No company matches your search. Try again, please." if @companies.empty?
 		else
-			@companies = User.companies
+			@companies = User.confirmed_companies
 		end
 	end
 

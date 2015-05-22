@@ -27,6 +27,8 @@ class User < ActiveRecord::Base
 	scope :students, -> { where(role: "student") }
 	scope :companies, -> { where(role: "company")}
 
+	scope :confirmed_companies, -> { companies.where(confirmed: true)}
+
 	private
 
 	def role_has_to_be_student_admin_or_company
