@@ -53,10 +53,12 @@ feature 'Log-in and authorization' do
 
     visit company_job_post_path(@company, job_post)
 
-    click_on('Apply!')
+    expect(page).not_to have_content('Apply!')
+    # The rest of the code is not needed anymore because the button only appears for students"
+    # click_on('Apply!')
 
-    expect(current_path).to eq(company_job_posts_path(@company))
-    expect(page).to have_content("Not authorized to apply to a job post")
+    # expect(current_path).to eq(company_job_posts_path(@company))
+    # expect(page).to have_content("Not authorized to apply to a job post")
   end
 
 
