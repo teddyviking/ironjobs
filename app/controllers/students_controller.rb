@@ -1,6 +1,6 @@
 class StudentsController < ApplicationController
-  	before_action :correct_user, only: [:edit, :update, :destroy]
   	before_action :authenticate_user!
+  	before_action :correct_user, only: [:edit, :update, :destroy]
 	def index
 		@students = User.students
 	end

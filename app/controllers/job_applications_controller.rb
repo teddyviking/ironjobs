@@ -1,6 +1,6 @@
 class JobApplicationsController < ApplicationController
-	before_action :is_student, only: [:new, :create, :index]
 	before_action :authenticate_user!
+	before_action :is_student, only: [:new, :create, :index]
 
 	def index
 		@student = User.students.find_by(id: params[:id])

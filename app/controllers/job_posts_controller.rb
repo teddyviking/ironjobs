@@ -1,7 +1,7 @@
 class JobPostsController < ApplicationController
+	before_action :authenticate_user!
 	before_action :correct_user, only: [:edit, :update, :destroy]
 	before_action :is_company, only: [:new, :create]
-	before_action :authenticate_user!
 
 
 	def index
