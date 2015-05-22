@@ -4,4 +4,6 @@
 	<%= render 'admin' %>
 <% elsif current_user.role == "company" %>
 	<%= render 'company' %>
+<% elsif current_user.role == "student" %>
+	<%= render 'student' %>
 <% end %>
