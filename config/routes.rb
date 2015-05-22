@@ -5,8 +5,9 @@ Rails.application.routes.draw do
     get "/sign_up", to: "devise/registrations#new"
     get "/edit_company_profile", to: "devise/registrations#edit"
   end
-  root to: "students#index"
+  root to: "dashboard#index"
 
+  get '/dashboard' => "dashboard#index", as: :dashboard
 
   get '/students' => "students#index", as: :students
   get '/students/:id' => "students#show", as: :student
@@ -26,6 +27,8 @@ Rails.application.routes.draw do
   get '/job_search' => "search#job_search", as: :job_search
   get '/student_search' => "search#student_search", as: :student_search
   get '/company_search' => "search#company_search", as: :company_search
+
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -40,10 +40,10 @@ end
 
 def create_admin(number)
 	admin = []
-	number.times {|n| admin << User.create(first_name: Faker::Name.first_name, 
+	number.times {|n| admin << User.create(first_name: "rafa-admin", 
 								  last_name: Faker::Name.last_name,
 								  location: Faker::Address.city,
-								  email: Faker::Internet.email,
+								  email: "tejado_admin@gmail.com",
 								  role: "admin",
 								  password: "test1234",
     							  password_confirmation: "test1234")}
