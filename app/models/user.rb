@@ -25,14 +25,6 @@ class User < ActiveRecord::Base
 	scope :students, -> { where(role: "student") }
 	scope :companies, -> { where(role: "company")}
 
-	# def self.students
-	# 	self.where(role: "student")
-	# end
-
-	# def self.companies
-	# 	self.where(role: "company")
-	# end
-
 	private
 
 	def role_has_to_be_student_admin_or_company
