@@ -5,12 +5,13 @@ feature 'Student searches companies' do
   background do
   	@companies = []
   	20.times {|n| @companies << create(:company)}
+    @companies.map{|company| company.update(confirmed:true)}
   end
   scenario 'Displaying all the companies' do
     visit company_search_path
 
     @companies.each do |company|
-    	expect(page).to have_content(company.company_name)
+    	expect(source).to include(company_path(company))
     end
 
     expect(find('.post-search')).to have_selector('li', count: 20)

@@ -116,6 +116,15 @@ feature 'Admin dashboard' do
   		expect(source).not_to include(company_path(new_company))
   	end
 
+  	scenario 'student is searching job posts' do
+  		new_job_post = @companies.first.job_posts.create(attributes_for(:job_post))
+  		login_as(create(:student), :scope => :user)
+
+  		visit job_search_path
+
+  		expect(source).not_to include(company_job_post_path(new_job_post.company, new_job_post))
+  	end
+
 
   end
 

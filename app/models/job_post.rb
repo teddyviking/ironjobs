@@ -12,6 +12,9 @@ class JobPost < ActiveRecord::Base
 
 
 
+	scope :confirmed_job_posts, -> { where(confirmed: true) }
+
+
 	def user_is_company
 		errors.add(:company_type, "must be a company to create a Job Post") if self.company == nil
 	end
