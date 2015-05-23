@@ -7,18 +7,27 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-    
+    <header class="navbar navbar-default" >
+    	<%= render 'layouts/header' %>
+    </header>
 
-   <%= render 'layouts/header' %>
+   <div ng-controller="alertsController" class="ng-scope">
+   		<%= render 'layouts/alerts' %>
+   	</div>
+
+   	<div class="container padding_top padding_bottom">
+
+   			<section class="content center padding_top padding_bottom ng-scope">
+
+   				<%= yield %>
+
+   			</section>
+   	</div>
 
 
-
-	<% flash.each do |name, msg| %>
-		<section> <%= msg %> </section>
-	<% end %>
-
-<%= yield %>
-
+	<footer >
+    	<%= render 'layouts/footer' %>
+    </footer>
 
 </body>
 </html>

@@ -1,8 +1,28 @@
-<h1>Search students</h1>
-	<%= render 'form' %>
-<ul class="post-search">
-	<% @students.each do |student| %>
-		<li> <%= link_to student.name, student_path(student) %> </br>
-			tags: <%= student.tag_list %></li>
-	<% end %>
-</ul>
+<section class="col-md-9 course_navigation padding_left ng-scope" >
+
+	<div tabset justified="true" class="ng-isolate-scope">
+		<div class="tab-content">
+			<div class="tab-pane ng-scope active">
+				<div class="ng-scope">
+					<article class="content font color dark_grey ng-binding" ng-bind-html="resource.content | markdownWithHtml  ">
+						<h1>Search students</h1>
+							<%= render 'form' %>
+						<ul class="post-search">
+						<% @students.each do |student| %>
+							<li> <%= link_to student.name, student_path(student) %> </br>
+							tags: <%= student.tag_list %></li>
+						<% end %>
+						</ul>
+					</article>
+
+				</div>
+					
+			</div>
+			
+		</div>
+	</div>
+	
+</section>
+
+
+

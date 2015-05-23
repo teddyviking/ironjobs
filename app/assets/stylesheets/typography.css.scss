@@ -1,0 +1,106 @@
+@import "variables";
+
+/* Better font rendering */
+  body,a,h1,h2,h3,h4,h5,h6 {
+    text-rendering: optimizeLegibility;
+    text-shadow: none;
+    color: $semi_dark_grey;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-decoration: none;
+  }
+
+  h1 {
+    font-weight: 100;
+  }
+
+  h2 {
+    font-weight: 200;
+  }
+
+  p {
+    font-weight: 100;
+    font-size: 1.1em;
+    color: $dark_grey;
+  }
+
+  a:hover {
+    text-decoration: none;
+    color: $blue;
+  }
+
+.font {
+  &.thin {
+    font-weight: 200;
+  }
+  &.book {
+    font-weight: 300;
+  }
+  &.normal {
+    font-weight: 400;
+  }
+  &.bold {
+    font-weight: 700;
+  }
+  &.italic {
+    font-style: italic;
+  }
+  &.underline {
+    border-bottom: 1px solid;
+  }
+  &.uppercase {
+    text-transform: uppercase;
+  }
+  &.left {
+    text-align: left;
+  }
+  &.right {
+    text-align: right;
+  }
+  &.center {
+    text-align: center;
+  }
+  &.justify {
+    text-align: justify;
+  }
+  &.tiny {
+    font-size: 1.2rem;
+  }
+  &.small {
+    font-size: 1.4rem;
+  }
+  &.smallish {
+    font-size: 1.5rem;
+  }
+  &.medium {
+    font-size: 1.6rem;
+  }
+  &.big {
+    font-size: 2.0rem;
+  }
+  &.biggest {
+    font-size: 2.4rem;
+  }
+  &.insane {
+    font-size: 3.1rem;
+  }
+  &.huge {
+    font-size: 5rem;
+  }
+  &.space {
+    letter-spacing: 0.25em;
+  }
+  &.color {
+    &.green {color: $green;}
+    &.blue {color: $blue;}
+    &.yellow {color: $yellow;}
+    &.red {color: $red;}
+    &.light_grey {color: $light_grey;}
+    &.dark_grey {color: $dark_grey;}
+    &.white {color: $white;}
+    &.black {color: $black;}
+    &.light_blue {color: $light_blue;}
+    &.grey {color: $grey;}
+    }
+  } 
+

@@ -1,9 +1,13 @@
-<h1>Welcome <%= current_user.first_name %></h1>
+<h1 class="font book big center padding_bottom color dark_grey">Welcome 
+	<span class="font bold"><%= current_user.first_name %>. </span>
+	</h1>
 
-<% if current_user.role == "admin" %>
-	<%= render 'admin' %>
-<% elsif current_user.role == "company" %>
-	<%= render 'company' %>
-<% elsif current_user.role == "student" %>
-	<%= render 'student' %>
-<% end %>
+<div class="row center">
+	<% if current_user.role == "admin" %>
+		<%= render 'admin' %>
+	<% elsif current_user.role == "company" %>
+		<%= render 'company' %>
+	<% elsif current_user.role == "student" %>
+		<%= render 'student' %>
+	<% end %>
+</div>
