@@ -1,8 +1,20 @@
-<h1>Search companies</h1>
-	<%= render 'form' %>
-<ul class="post-search">
-	<% @companies.each do |company| %>
-		<li> <%= link_to company.company_name, company_path(company)%> </br>
-			tags: <%= company.tag_list %></li>
-	<% end %>
-</ul>
+<article class="col-md-8 inline floatnone valign-t">
+	<div class="panel panel-default">
+	  <div class="panel-heading">
+	  	<h3 class="panel-title font biggest book block color black">Search companies</h3>
+		<div>
+			<%= render 'form' %> 
+		</div>			
+	  </div>
+	   <div class="panel-body text-left">	
+			<div class="list-group student-listing post-search">
+				<% @companies.each do |company| %>
+				<li class="list-group-item">
+					<strong><%= link_to company.company_name, company_path(company)%> </strong></br>
+					tags: <%= company.tag_list %>
+				</li>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</article >

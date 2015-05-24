@@ -51,7 +51,8 @@ def create_admin(number)
 end
 
 def create_job_posts(number, company, tags)
-	number.times {|n| JobPost.create( company_id: company.id,
+	job_posts = []
+	number.times {|n| job_posts << JobPost.create( company_id: company.id,
     								company_type: "User",
     								description: Faker::Lorem.paragraph,
     								location: Faker::Address.city,
@@ -59,14 +60,29 @@ def create_job_posts(number, company, tags)
     								position: Faker::Name.title,
     								contract_type: Faker::Lorem.word,
     								tag_list: tags.sample(rand(1..3)))}
+	job_posts
 end
 
 my_tags = ["javascript", "rails", "css", "jquery", "node", "photoshop"]
 
-students = create_students(10, my_tags)
-companies = create_companies(3, my_tags)
+students = create_students(20, my_tags)
+
+companies = create_companies(15, my_tags)
+confirmed_companies = User.companies.sample(rand(5..10))
+confirmed_companies.each do |company|
+	company.confirmed = true
+	company.save
+end
+
 admin = create_admin(1)
+
 job_posts = companies.each{|company| create_job_posts(3, company, my_tags)}
+confirmed_jp= JobPost.all.sample(rand(12..18))
+confirmed_jp.each do |job_post| 
+	job_post.confirmed = true
+	job_post.save
+end
+
 
 my_student = User.create(first_name: "rafa-estudiante",
 									last_name: "tejado",
@@ -88,3 +104,6 @@ my_company = User.create(first_name: "rafa-company",
 									description: Faker::Lorem.paragraph,
 									tag_list: my_tags.sample(rand(2..5)),
 									role: "company")
+
+my_company.confirmed = true
+my_company.save

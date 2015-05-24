@@ -49,7 +49,6 @@ FactoryGirl.define do
   end
 
   factory :complete_student, parent: :student do |f|
-    f.facebook {Faker::Internet.url}
     f.twitter {Faker::Internet.url}
     f.github {Faker::Internet.url}
     f.linkedin {Faker::Internet.url}

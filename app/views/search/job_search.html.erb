@@ -1,11 +1,20 @@
-<h1>Available Jobs</h1>
-
-<%= render 'form' %>
-
-<ul class="post-search">
-	<% @job_posts.each do |post| %>
-		<li><%= link_to post.position,  company_job_post_path(post.company, post) %> <br>
-			tags: <%= post.tag_list %>
-		</li>
-	<% end %>
-</ul>
+<article class="col-md-8 inline floatnone valign-t">
+	<div class="panel panel-default">
+	  <div class="panel-heading">
+	  	<h3 class="panel-title font biggest book block color black">Available Jobs</h3>
+		<div>
+			<%= render 'form' %> 
+		</div>			
+	  </div>
+	   <div class="panel-body text-left">	
+			<div class="list-group student-listing post-search">
+				<% @job_posts.each do |post| %>
+				<li class="list-group-item">
+					<strong><%= link_to post.position,  company_job_post_path(post.company, post) %> </strong></br>
+					tags: <%= post.tag_list %>
+				</li>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</article >
