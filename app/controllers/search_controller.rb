@@ -1,8 +1,8 @@
 class SearchController < ApplicationController
 	def student_search
 		if params[:query]
-			tags = get_tags
-			@students = User.students.tagged_with(tags)
+			@tags = get_tags
+			@students = User.students.tagged_with(@tags)
 			flash.now[:alert] = "No student matches your search. Try again, please." if @students.empty?
 		else
 			@students = User.students
@@ -11,8 +11,8 @@ class SearchController < ApplicationController
 
 	def job_search
 		if params[:query]
-			tags = get_tags
-			@job_posts = JobPost.confirmed.tagged_with(tags)
+			@tags = get_tags
+			@job_posts = JobPost.confirmed.tagged_with(@tags)
 			flash.now[:alert] = "No job post matches your search. Try again, please." if @job_posts.empty?
 		else
 			@job_posts = JobPost.confirmed
@@ -21,8 +21,8 @@ class SearchController < ApplicationController
 
 	def company_search
 		if params[:query]
-			tags = get_tags
-			@companies = User.confirmed_companies.tagged_with(tags)
+			@tags = get_tags
+			@companies = User.confirmed_companies.tagged_with(@tags)
 			flash.now[:alert] = "No company matches your search. Try again, please." if @companies.empty?
 		else
 			@companies = User.confirmed_companies

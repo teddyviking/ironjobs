@@ -1,8 +1,23 @@
-<%= form_tag(set_route_to_filter , method: "get") do %>
-  <div class="field">
-	<%= label_tag(:query, "Search for:") %>
- 	<%= text_field_tag(:query) %>
-  </div>
-  
-  <%= submit_tag("Search") %>
-<% end %>
+<div class="container">
+
+	<%= form_tag(set_route_to_filter , method: "get", class: "navbar-form navbar-left") do %>
+	  <div class="field form-group">
+		<%= label_tag(:query, "Search for:") %>
+	 	<%= text_field_tag :query, "", class: "form-control" %>
+	  </div>
+	  
+	  <%= submit_tag("Search", class: "btn btn-default") %>
+
+	  <% if @tags %>
+		Filtering by: <% @tags.each do |tag|%>
+			<strong><%= tag %> </strong>
+		<% end %>
+
+	  	<%= link_to set_route_to_filter, class: "btn btn-default" do %>
+	  	<span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> Reset tags
+	  <% end %>
+
+	  <% end %>
+	<% end %>
+
+</div>

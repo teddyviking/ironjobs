@@ -119,8 +119,13 @@ footer {
 }
 
 
+/* Search */ 
 
-
+.student-listing {
+	.list-group-item:hover {
+		background: $light_grey;
+	}
+}
 
 
 .padding {padding: $pad;}
