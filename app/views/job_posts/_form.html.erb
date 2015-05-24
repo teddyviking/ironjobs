@@ -1,40 +1,40 @@
-<%= form_for([@company, @job_post], url: dynamic_job_post_form_route(@company, @job_post)) do |f| %>
+
+  <%= form_for([@company, @job_post], url: dynamic_job_post_form_route(@company, @job_post)) do |f| %>
 
     
 
-   <div class="field">
+   <div class="form-group">
     <%= f.label :position %><br />
-    <%= f.text_field :position %>
+    <%= f.text_field :position, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :description %><br />
-    <%= f.text_area :description %>
+    <%= f.text_area :description, class: "form-control" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :contract_type %><br />
-    <%= f.text_field :contract_type %>
+    <%= f.text_field :contract_type, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :location %><br />
-    <%= f.text_field :location %>
+    <%= f.text_field :location, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :salary %><br />
-    <%= f.number_field :salary %>
+    <%= f.number_field :salary, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :tags %><br>
-    <%= f.text_field :tag_list %>
+    <%= f.text_field :tag_list, class: "form-control" %>
   </div>
 
   <div class="actions">
     <%= f.submit @job_post.new_record? ? "Create Job Post" : "Update Job" %>
   </div>
 
+  <% end %>
 
-
-<% end %>

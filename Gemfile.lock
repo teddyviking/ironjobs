@@ -240,7 +240,11 @@ PLATFORMS
 
 DEPENDENCIES
   acts-as-taggable-on (~> 3.4)
+<<<<<<< HEAD
   bootstrap-sass
+=======
+  bootstrap-sass (~> 3.3.4.1)
+>>>>>>> 888d835b8d7828ad9c6f2c1a5c901b9850049c1b
   byebug
   capybara
   database_cleaner (~> 1.4.1)

@@ -8,9 +8,10 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-    
+    <header class="navbar navbar-default" >
+    	<%= render 'layouts/header' %>
+    </header>
 
-   <%= render 'layouts/header' %>
 
    <% if params[:controller] == "dashboard" %>
    	<%=  render 'dashboard/notifications' %>
@@ -37,5 +38,6 @@
 
 
 	<%= render 'layouts/footer' %>
+
 </body>
 </html>

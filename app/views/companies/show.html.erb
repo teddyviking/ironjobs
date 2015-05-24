@@ -30,7 +30,7 @@
 	<div class="panel panel-default">
 		<div class="panel-body text-left">
 			<% if @company.job_posts %>
-				<h2 class="font big">Opened positions</h2>
+				<h2 class="font big">Open positions</h2>
 				<ul><% @company.job_posts.each do |post| %>
 					<li class="font tiny"><%= link_to post.position,  company_job_post_path(@company, post) %></li>
 

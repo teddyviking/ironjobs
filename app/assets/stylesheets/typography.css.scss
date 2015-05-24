@@ -1,6 +1,7 @@
 @import "variables";
 
 body,a,h1,h2,h3,h4,h5,h6 {
+
     text-rendering: optimizeLegibility;
     text-shadow: none;
     color: $semi_dark_grey;
@@ -30,6 +31,7 @@ body,a,h1,h2,h3,h4,h5,h6 {
 
 
   .font {
+
   &.thin {
     font-weight: 200;
   }
@@ -88,6 +90,7 @@ body,a,h1,h2,h3,h4,h5,h6 {
     font-size: 5rem;
   }
    &.space {
+
     letter-spacing: 0.25em;
   }
   &.color {
@@ -103,3 +106,4 @@ body,a,h1,h2,h3,h4,h5,h6 {
     &.grey {color: $grey;}
   }
 }
+
