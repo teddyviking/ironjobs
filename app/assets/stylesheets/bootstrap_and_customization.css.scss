@@ -5,19 +5,28 @@
 
 @import 'typography';
 
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+	background: #fff;
+	margin-bottom: 60px;
+}
+
+
 footer {
     background: $dark-grey;
+    position: absolute;
+  	bottom: 0;
     font-weight: bold;
     color: $white;
     height: 100px;
 	padding-top: 38px;
-	position: absolute;
-  	bottom: 0;
   	width: 100%;
 }
-body {
-	background: #fff;
-}
+
 
 .navbar {
 	background: $dark_grey;
@@ -43,6 +52,7 @@ body {
 			margin-left: 100px;
 		}
 }
+
 
 .alert {
 	margin-bottom: 0;
