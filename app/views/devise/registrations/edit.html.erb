@@ -1,98 +1,107 @@
+<section class="content center padding_top padding_bottom">
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
+ <h1 class="font book insane bold center padding_bottom margin0 padding0 color dark_grey">Edit your company profile</h1>
 
-  <h2>Your company profile</h2>
+ <div class="center edit_profile col-md-10 col-centered  striped_bordered">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= devise_error_messages! %>
 
-    <div class="field">
-      <%= f.label :description %><br />
-      <%= f.text_area :description %>
+    <div class="col-md-5 inline floatnone valign-t">
+      <h3 class="font color semi_padding_left semi_padding_top grey text-left">Company information</h3>
+                <div class="field">
+            <%= f.label :description %><br />
+            <%= f.text_area :description, class: "form-control" %>
+          </div>
+
+           <div class="field">
+            <%= f.label :location %><br />
+            <%= f.text_field :location, class: "form-control"%>
+          </div>
+
+        <div class="field">
+          <%= f.label :web_site %><br>
+          <%= f.url_field :url, class: "form-control"%>
+        </div>
+
+        <div class="field">
+          <%= f.label :github %><br>
+          <%= f.url_field :github, class: "form-control"%>
+        </div>
+
+        <div class="field">
+          <%= f.label :twitter %><br>
+          <%= f.url_field :twitter, class: "form-control"%>
+        </div>
+
+        <div class="field">
+          <%= f.label :linkedin %><br>
+          <%= f.url_field :linkedin, class: "form-control"%>
+        </div>
+
+        <div class="field">
+          <%= f.label "Do you have open positions?" %>  
+          <%= f.check_box :searching%>
+        </div>
+
+
+
     </div>
 
-  <div class="field">
-    <%= f.label :web_site %><br>
-    <%= f.url_field :url%>
-  </div>
-
-  <div class="field">
-    <%= f.label :facebook %><br>
-    <%= f.url_field :facebook%>
-  </div>
-
-  <div class="field">
-    <%= f.label :github %><br>
-    <%= f.url_field :github%>
-  </div>
-
-  <div class="field">
-    <%= f.label :twitter %><br>
-    <%= f.url_field :twitter%>
-  </div>
-
-  <div class="field">
-    <%= f.label :linkedin %><br>
-    <%= f.url_field :linkedin%>
-  </div>
-
-  <div class="field">
-    <%= f.label "Do you have open positions?" %><br>
-    <%= f.check_box :searching%>
-  </div>
+    <div class="col-md-5 inline floatnone valign-t">
+      <h3 class="font color semi_padding_left semi_padding_top grey text-left">Account details</h3>
 
 
-  <h2>Account details</h2>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+                <div class="field">
+                  <%= f.label :email %><br />
+                  <%= f.email_field :email, class: "form-control"%>
+                </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+                <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                  <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+                <% end %>
 
-   <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name %>
-  </div>
+                 <div class="field">
+                  <%= f.label :first_name %><br />
+                  <%= f.text_field :first_name, class: "form-control" %>
+                </div>
 
-   <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
-  </div>
+                 <div class="field">
+                  <%= f.label :last_name %><br />
+                  <%= f.text_field :last_name, class: "form-control" %>
+                </div>
 
-  <div class="field">
-    <%= f.label :location %><br />
-    <%= f.text_field :location %>
-  </div>
+                <div class="field">
+                  <%= f.label :phone %><br>
+                  <%= f.telephone_field :phone, class: "form-control" %>
+                </div>
 
-  <div class="field">
-    <%= f.label :phone %><br>
-    <%= f.telephone_field :phone %>
-  </div>
+                <div class="field">
+                  <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+                  <%= f.password_field :password, class: "form-control", autocomplete: "off" %>
+                </div>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+                <div class="field">
+                  <%= f.label :password_confirmation %><br />
+                  <%= f.password_field :password_confirmation, class: "form-control", autocomplete: "off" %>
+                </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
+                <div class="field">
+                  <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+                  <%= f.password_field :current_password, class: "form-control", autocomplete: "off" %>
+                </div>
+    </div>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
+    <div class= "col-md-5 inline floatnone valign-t"></div>
 
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
+    <% end %>
+ </div>
 
-<h3>Cancel my account</h3>
+ <div class="edit_profile col-md-10 col-centered">
+  <p><%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete,  class: "btn btn-default" %></p>
+  <%= link_to "Back", :back %>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+ </div>
 
-<%= link_to "Back", :back %>
+
+</section>

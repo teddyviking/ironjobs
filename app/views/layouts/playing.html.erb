@@ -1,41 +1,112 @@
-<div class="container">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <%= link_to  (image_tag "logo.png", class: "logo"), root_path, class: "navbar-brand" %>
-    </div>
+<section class="content center padding_top padding_bottom">
+ 
+  <h1 class="font book insane bold center padding_bottom margin0 padding0 color dark_grey">Edit your company profile</h1>
+  <h3 class="font color grey margin_bottom">Fill out your company information</h3>
+  <div class="container">
+  <div class="edit_profile col-md-6 col-centered  striped_bordered">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= devise_error_messages! %>
+      <article class="form-group padding text-left">
+        <h3 class="font color semi_padding_left semi_padding_top grey text-left">Company information</h3>
 
-   <% if user_signed_in? %>
-     
+          <div class="field">
+            <%= f.label :description %><br />
+            <%= f.text_area :description, class: "form-control" %>
+          </div>
+
+           <div class="field">
+            <%= f.label :location %><br />
+            <%= f.text_field :location, class: "form-control"%>
+          </div>
+
+        <div class="field">
+          <%= f.label :web_site %><br>
+          <%= f.url_field :url, class: "form-control"%>
+        </div>
+
+        <div class="field">
+          <%= f.label :github %><br>
+          <%= f.url_field :github, class: "form-control"%>
+        </div>
+
+        <div class="field">
+          <%= f.label :twitter %><br>
+          <%= f.url_field :twitter, class: "form-control"%>
+        </div>
+
+        <div class="field">
+          <%= f.label :linkedin %><br>
+          <%= f.url_field :linkedin, class: "form-control"%>
+        </div>
+
+        <div class="field">
+          <%= f.label "Do you have open positions?" %><br>
+          <%= f.check_box :searching, class: "form-control"%>
+        </div>
+
+
+      </article>
+      
+      <article>
+        <h3 class="font color semi_padding_left semi_padding_top grey text-left">Account details</h3>
+
+        <div class="field">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true %>
+        </div>
+
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+        <% end %>
+
+         <div class="field">
+          <%= f.label :first_name %><br />
+          <%= f.text_field :first_name %>
+        </div>
+
+         <div class="field">
+          <%= f.label :last_name %><br />
+          <%= f.text_field :last_name %>
+        </div>
+
+        <div class="field">
+          <%= f.label :phone %><br>
+          <%= f.telephone_field :phone %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+          <%= f.password_field :password, autocomplete: "off" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "off" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+          <%= f.password_field :current_password, autocomplete: "off" %>
+        </div>
+      </article>
+      <aside>
+         <div class="actions">
+          <%= f.submit "Update" %>
+        </div>
+        <% end %>
+      </aside>
+      <div>
+        
+      </div>
+      </div>    
+  </div>
+
+</section>
+
+
+
   
-   <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-          <a href="" class="dropdown-toggle login_area inline valign-m inline ng-binding" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
-          <img class="inline avatartop" ng-src="/system/images/users/avatars/thumb/215.jpg?1429627120" src="/system/images/users/avatars/thumb/215.jpg?1429627120">
-          <%= current_user.first_name %><b class="caret"></b></a>
-          
-          <ul class="dropdown-menu">
-            <% if user_signed_in? %>
-              <li><%= link_to "Search Student", student_search_path %></li>
-              <li><%= link_to "Search Company", company_search_path %></li>
-              <li><li><%= link_to "Search Job Post", job_search_path %></li></li>
-              <li><%= link_to "Edit my profile", edit_student_path(current_user) %></li>
-              <li class="divider"></li>
-              <li><%= link_to "Logout", destroy_user_session_path, method: :delete%></li>
-            <% end %>
-          </ul>
-        </li>
-      </ul>
-    </div>
-     <%end %><!-- /.navbar-collapse -->
-</div>
 
-  
+
+
