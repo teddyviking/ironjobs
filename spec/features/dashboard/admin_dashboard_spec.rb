@@ -33,14 +33,14 @@ feature 'Admin dashboard' do
 
   context 'confirming new companies' do
 
-  	scenario 'there is a company waiting for confirmation' do
+  	scenario 'there is a pending company waiting for confirmation' do
   		new_company = create(:company)
   		login_as(@admin, :scope => :user)
 
 
   	  visit dashboard_path
 
-  	  expect(page).to have_content("1 company confirmation request")
+  	  expect(page).to have_content("1 pending company confirmation request")
   		expect(page).to have_content(:link_or_button, new_company.company_name)
 
   		click_on(new_company.company_name)
@@ -61,7 +61,7 @@ feature 'Admin dashboard' do
 
 	  	visit dashboard_path
 
-	  	expect(page).to have_content("2 company confirmation requests")
+	  	expect(page).to have_content("2 pending company confirmation requests")
 		expect(page).to have_content(:link_or_button, new_companies[0].company_name)
 		expect(page).to have_content(:link_or_button, new_companies[1].company_name)
 	  end
@@ -75,7 +75,7 @@ feature 'Admin dashboard' do
 
 	  	visit dashboard_path
 
-	  	expect(page).to have_content("1 job post validation request")
+	  	expect(page).to have_content("1 pending job post validation request")
 		  expect(page).to have_content(:link_or_button, new_job_post_path)
 
 		  click_on(new_job_post_path)
@@ -98,7 +98,7 @@ feature 'Admin dashboard' do
 
 	  	visit dashboard_path
 
-	  	expect(page).to have_content("2 job post validation request")
+	  	expect(page).to have_content("2 pending job post validation request")
 		expect(page).to have_content(:link_or_button, new_job_posts[0].position + " by " + new_job_posts[0].company.company_name)
 		expect(page).to have_content(:link_or_button, new_job_posts[0].position + " by " + new_job_posts[0].company.company_name)
   	end
