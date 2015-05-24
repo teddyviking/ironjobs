@@ -3,6 +3,7 @@
 <head>
   <title>Ironjobs</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
@@ -11,14 +12,30 @@
 
    <%= render 'layouts/header' %>
 
+   <% if params[:controller] == "dashboard" %>
+   	<%=  render 'dashboard/notifications' %>
+   <% end %>
+
+   <% if flash.any? %>
+
+   	<%= render 'layouts/flash' %>
+
+   <% end %>
 
 
-	<% flash.each do |name, msg| %>
-		<section> <%= msg %> </section>
-	<% end %>
 
-<%= yield %>
+   <div class="container padding_top padding_bottom">
+
+   		<%= yield %>
 
 
+   </div>
+
+
+	
+
+
+
+	<%= render 'layouts/footer' %>
 </body>
 </html>

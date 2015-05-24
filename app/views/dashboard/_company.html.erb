@@ -1,5 +1,49 @@
-<%= link_to "Search students", student_search_path %>
 
-<%= link_to "Edit your company profile", edit_company_profile_path %>
 
-<%= link_to "Create a new job post", new_company_job_post_path(current_user) %>
+
+
+
+<article class="col-md-4 inline floatnone valign-t">
+	<div class="panel panel-default">
+		<div class="panel-body codepanel">
+			<h2 class="font big book block color white"><%= link_to "Search students", student_search_path, class: "font big book block color white" %></h2>
+		</div>
+		<div class="panel-footer text-left">
+			<hr class="blue_bg">
+			<div class="data semi_padding_bottom">
+                <span class="font color semi_grey small"> Really cool filter feature</span>
+            </div>
+		</div>
+	</div>
+	
+
+</article>
+
+<article class="col-md-4 inline floatnone valign-t">
+	<div class="panel panel-default">
+		<div class="panel-body codepanel">
+			<h2 class="font big book block color white"><%= link_to "Edit your company profile", edit_company_profile_path, class: "font big book block color white"%></h2>
+		</div>
+		<div class="panel-footer text-left">
+			<hr class="blue_bg">
+			<div class="data semi_padding_bottom">
+                <span class="font color semi_grey small ng-binding"> Make it sexy</span>
+            </div>
+		</div>
+	</div>
+</article>
+
+
+<article class="col-md-4 inline floatnone valign-t">
+	<div class="panel panel-default">
+		<div class="panel-body codepanel">
+			<h2 class="font big book block color white"><%= link_to "Create a new job post", new_company_job_post_path(current_user), class: "font big book block color white"%></h2>
+		</div>
+		<div class="panel-footer text-left">
+			<hr class="blue_bg">
+			<div class="data semi_padding_bottom">
+                <span class="font color semi_grey small ng-binding"> Keep garbage contracts away!</span>
+            </div>
+        </div>
+	</div>
+</article>

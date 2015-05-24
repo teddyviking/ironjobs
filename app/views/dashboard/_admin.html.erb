@@ -1,35 +1,42 @@
-<section>
-	<h2>Notifications</h2>
-		<ul class="notifications">
+
+<article class="col-md-4 inline floatnone valign-t">
+	<div class="panel panel-default">
+		<div class="panel-body codepanel">
+			<h2 class="font big book block color white">Companies waiting for confirmation</h2>
+		</div>
+		<div class="panel-footer text-left">
+			<hr class="blue_bg">
+			<div class="data semi_padding_bottom">
+               <ul class="list-group">
+				<% @pending_companies.each do |company| %>
+					<%= link_to company.company_name, company_path(company), class: "list-group-item font color semi_grey small" %>
+				<% end %>
+				</ul> 
+
+                  
+            </div>
 			
-			<% if @pending_companies.empty? && @pending_job_posts %>
-				<li>Nothing pending</li>
-			<% end %>
+		</div>
+		
+	</div>
+	
 
-			<% if !@pending_companies.empty? %>
-				<li> <%= @pending_companies.count %> company confirmation <%="request".pluralize%></li>
-			<% end %>
+</article>
 
-			<% if !@pending_job_posts.empty? %>
-				<li> <%= @pending_job_posts.count %> job post validation <%="request".pluralize%></li>
-			<% end %>
-		</ul>
-</section>
-<section>
-	<h2>Companies waiting for confirmation</h2>
-	<ul>
-		<% @pending_companies.each do |company| %>
-			<li><%= link_to company.company_name, company_path(company) %></li>
-		<% end %>
-	</ul>
-
-</section>
-
-<section>
-	<h2>Job Posts to validate</h2>
-	<ul>
-		<% @pending_job_posts.each do |post| %>
-			<li><%= link_to post.position + " by " + post.company.company_name,  company_job_post_path(post.company, post) %></li>
-		<% end %>
-	</ul>
-</section>
+<article class="col-md-4 inline floatnone valign-t">
+	<div class="panel panel-default">
+		<div class="panel-body codepanel">
+			<h2 class="font big book block color white">Job Posts to validate</h2>
+		</div>
+		<div class="panel-footer text-left">
+			<hr class="blue_bg">
+			<div class="data semi_padding_bottom">
+				<ul class="list-group">
+				<% @pending_job_posts.each do |post| %>
+					<%= link_to post.position + " by " + post.company.company_name,  company_job_post_path(post.company, post), class: "list-group-item font color semi_grey small" %>
+				<% end %>
+				</ul>
+			</div>
+		</div>
+	</div>
+</article>

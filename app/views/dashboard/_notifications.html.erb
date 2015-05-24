@@ -1,0 +1,18 @@
+<% if current_user.role == "admin" %>
+	<section class="alert alert-info" role="alert">
+			<ul class="notifications">
+				
+				<% if @pending_companies.empty? && @pending_job_posts %>
+					<li>Nothing pending</li>
+				<% end %>
+
+				<% if !@pending_companies.empty? %>
+					<li> <%= @pending_companies.count %> pending company confirmation <%="request".pluralize%></li>
+				<% end %>
+
+				<% if !@pending_job_posts.empty? %>
+					<li> <%= @pending_job_posts.count %> pending job post validation <%="request".pluralize%></li>
+				<% end %>
+			</ul>
+	</section>
+<% end %>
