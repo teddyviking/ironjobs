@@ -25,6 +25,9 @@ class User < ActiveRecord::Base
   scope :companies, -> { where(role: "company")}
   scope :confirmed_companies, -> { companies.where(confirmed: true)}
 
+  after_create :send_admin_mail, if: :is_a_company?
+
+
 	def name
 		first_name + " " + last_name
 	end
@@ -59,10 +62,14 @@ class User < ActiveRecord::Base
 	end
 
 	def company_validations
-		if  situation.nil? || company_name.nil?
+		if  situation.nil?
 			errors.add(:situation, "must include situation of the company")
 		elsif company_name.nil?
 			errors.add(:company_name, "must include company name")
 		end
+	end
+
+	def send_admin_mail
+   		AdminMailer.send_new_company_notification(self).deliver_now
 	end
 end

@@ -34,4 +34,27 @@ RSpec.describe AdminMailer, type: :mailer do
       expect(mail.from).to eql(['ironjobs@ironhack.com'])
     end
   end
+
+  describe "notification of the creation of a company" do
+    let(:create_company) {create(:company)}
+    let(:mail) {AdminMailer.send_new_company_notification(create_company)}
+
+    it 'renders the subject' do
+      expect(mail.subject).to eql('New company needs validation')
+    end
+
+    it 'renders the receiver email' do
+      expect(mail.to).to eql(['ironjobs@ironhack.com'])
+    end
+
+    it 'renders the sender email' do
+      expect(mail.from).to eql(['ironjobs@ironhack.com'])
+    end
+
+    it 'renders the link to the company profile' do
+      expect(mail.body.encoded).to match("http://example.com/companies/#{create_company.id}")
+    end
+
+
+  end
 end

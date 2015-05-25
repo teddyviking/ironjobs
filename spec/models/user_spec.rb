@@ -77,6 +77,11 @@ RSpec.describe User, type: :model do
         company = build(:company, company_name: nil)
         expect(company).to be_invalid
       end
+
+      it "sends an email to the admin" do
+
+        expect { create(:company) }.to change { ActionMailer::Base.deliveries.count }.by(1)
+      end
     end
 
   end
@@ -91,7 +96,7 @@ RSpec.describe User, type: :model do
     end
 
     it "sends an email to the company" do
-      expect { new_company.confirm_company }.to change { ActionMailer::Base.deliveries.count }.by(1)
+      expect { new_company.confirm_company }.to change { ActionMailer::Base.deliveries.count }.by(2)
     end
   end
 
@@ -106,7 +111,7 @@ RSpec.describe User, type: :model do
     end
 
     it "sends an email to the company" do
-      expect { admin.confirm_job_post(new_job_post) }.to change { ActionMailer::Base.deliveries.count }.by(1)
+      expect { admin.confirm_job_post(new_job_post) }.to change { ActionMailer::Base.deliveries.count }.by(2)
     end
 
   end
