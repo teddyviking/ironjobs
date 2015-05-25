@@ -12,6 +12,7 @@
 	  	<hr class="blue_bg">
 	    	<p class="font thin small"><strong>Description</strong>: <%= @company.description %> </p>
 	    	<p class="font thin small"><strong>Location</strong>: <%= @company.location %> </p>
+	    	<% if @company.url %><p class="font thin small"><strong>Web</strong>: <%= @company.url %> </p> <% end %>
 	    	<p class="font thin small"><strong>Situation of the company</strong>: <%= @company.situation %> </p>
 	    	<p class="font thin small"><strong>Person to contact</strong>: <%= @company.name %> </p>
 	    	<p class="font thin small"><strong>Email</strong>: <%= @company.email %> </p>

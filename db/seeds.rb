@@ -26,6 +26,7 @@ def create_companies(number, tags)
 	number.times {|n| companies << User.create(first_name: Faker::Name.first_name, 
 								  last_name: Faker::Name.last_name,
 								  location: Faker::Address.city,
+								  url: Faker::Internet.url,
 								  email: Faker::Internet.email,
 								  role: "company",
 								  searching: false,
