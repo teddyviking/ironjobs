@@ -1,8 +1,12 @@
 <article class="col-md-8 inline floatnone valign-t">
 
 	<div class="panel panel-default">
-	  <div class="panel-company">
-	    <h3 class="panel-title font biggest book block color white"><%= @company.company_name %></h3>
+	  <div class="panel-company media">
+	  			<div class= "media-left media-middle"><%= image_tag @company.avatar.url(:thumb) %></div>
+
+	  	<div class="media-body">
+	  		<h3 class=" panel-title font biggest book block color white"><%= @company.company_name %></h3>
+		</div>
 	  </div>
 	  <div class="panel-body text-left">
 	  	<hr class="blue_bg">

@@ -43,6 +43,11 @@
           <%= f.check_box :searching%>
         </div>
 
+        <div class="field">
+          <%= f.label "Upload the logo of your company" %>
+          <%= f.file_field :avatar %>
+        </div>
+
 
 
     </div>
@@ -92,7 +97,12 @@
                 </div>
     </div>
 
-    <div class= "col-md-5 inline floatnone valign-t"></div>
+    <div class= "col-md-5 inline floatnone valign-t">
+        <div class="actions">
+          <%= f.submit "Update the profile" %>
+        </div>
+
+    </div>
 
     <% end %>
  </div>
