@@ -11,26 +11,11 @@ class JobPostsController < ApplicationController
 
 	def show
 		if current_user.role == "admin"
-			if !@company = User.companies.find_by_id(params[:company_id])
-				@companies = User.companies
-				flash.now[alert] = "Company does not exist"
-				render 'companies#index'
-			end
-			if !@job_post = JobPost.find_by_id(params[:id])
-				flash[alert] = "Job post does not exist"
-				redirect_to job_search_path
-			end
-			
+			@job_post = JobPost.find_by_id(params[:id])
+			job_post_not_found if !@job_post || !@job_post.company
 		else
-			# if !@company = User.confirmed_companies.find_by_id(params[:company_id])
-			# 	@companies = User.confirmed_companies
-			# 	flash.now[alert] = "Company does not exist"
-			# 	redirect_to job_search_path
-			# end
-			if !@job_post = JobPost.confirmed.find_by_id(params[:id])
-				flash[alert] = "Job post does not exist"
-				redirect_to job_search_path
-			end
+			@job_post = JobPost.confirmed.find_by_id(params[:id])
+			job_post_not_found if !@job_post || !@job_post.company.confirmed				
 		end
 	end
 
@@ -78,5 +63,10 @@ class JobPostsController < ApplicationController
 	def is_company
 		@user = User.find_by(id: current_user.id)
 		redirect_to job_search_path, notice: "Not authorized to create a job post" if @user.role != "company"
+	end
+
+	def job_post_not_found
+		flash[alert] = "Job post does not exist"
+		redirect_to job_search_path
 	end
 end

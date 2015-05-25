@@ -33,17 +33,12 @@ RSpec.describe CompaniesController, type: :controller do
 		context "when the company doesn't exist" do
 			before(:each) {	get :show,{ id: "no_id" } }
 
-			it "responds with an HTTP 301 status code" do
-				expect(response).to have_http_status(301)
+			it "responds with an HTTP 302 status code" do
+				expect(response).to have_http_status(302)
 			end
 
-			it "renders the index template" do
-				expect(response).to render_template("index")
-			end
-
-			it "gets an array of companies" do
-				companies = [create(:company), create(:company)]
-				expect(assigns(:companies)).to match_array(companies)
+			it "redirects to the companies search action" do
+				expect(response).to redirect_to(company_search_path)
 			end
 		end
 
@@ -69,17 +64,4 @@ RSpec.describe CompaniesController, type: :controller do
 		    end
 		end
 	end
-	
-
-	# describe "POST #create" do
-	# 	context "when register information is invalid" do
-	# 		it ""
-	# 	end
-
-	# 	context "when register information is valid" do
-
-	# 	end
-	# end
-
-	
 end

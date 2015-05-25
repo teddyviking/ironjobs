@@ -20,6 +20,5 @@ class CompaniesController < ApplicationController
 	def company_not_found
 		flash[:alert] = "Company not found"
 		redirect_to company_search_path
-		return
 	end
 end
