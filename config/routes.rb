@@ -1,35 +1,38 @@
 Rails.application.routes.draw do
+  
+
   devise_for :users
 
   devise_scope :user do
     get "/sign_up", to: "devise/registrations#new"
     get "/edit_company_profile", to: "devise/registrations#edit"
   end
+  
+  #Dashboard
   root to: "dashboard#index"
-
   get '/dashboard' => "dashboard#index", as: :dashboard
 
 
+  #Admin
   get '/company_confirmation/:id' => "admin#company_confirmation", as: :company_confirmation
   post '/company_confirmation/:id' => "admin#company_confirmation"
   get '/job_post_confirmation/:id' => "admin#job_post_confirmation", as: :job_post_confirmation
   post '/job_post_confirmation/:id' => "admin#job_post_confirmation"
 
-  get '/students' => "students#index", as: :students
-  get '/students/:id' => "students#show", as: :student
-  get '/students/:id/edit' => "students#edit", as: :edit_student
-  patch '/students/:id' => "students#update"
 
+  #Students and job applications
+  resources :students, only:[:index, :show, :edit, :update]
 
   get '/students/:id/applications' => "job_applications#index", as: :student_applications
   post '/students/:id/applications' => "job_applications#create"
 
 
-  resources :companies do
+  #Companies and job posts
+  resources :companies, only: [:index, :show] do
     resources :job_posts
   end
 
-
+  # Search engine
   get '/job_search' => "search#job_search", as: :job_search
   get '/student_search' => "search#student_search", as: :student_search
   get '/company_search' => "search#company_search", as: :company_search
