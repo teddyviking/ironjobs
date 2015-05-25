@@ -29,5 +29,9 @@ RSpec.describe JobPost, type: :model do
 		it "is invalid if has no position" do
 			expect(@company.job_posts.create(attributes_for(:job_post, position: nil))).to be_invalid
 		end
+
+		it "sends an email to admin" do
+			expect { create(:company).job_posts.create(attributes_for(:job_post)) }.to change { ActionMailer::Base.deliveries.count }.by(2)
+		end
 	end
 end

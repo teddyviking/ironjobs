@@ -13,4 +13,10 @@ class AdminMailer < ApplicationMailer
 		@company = company
 		mail(to: 'ironjobs@ironhack.com', subject: 'New company needs validation')
 	end
+
+	def send_new_job_post_notification(job_post)
+		@job_post = job_post
+		@company = job_post.company
+		mail(to: 'ironjobs@ironhack.com', subject: 'New job post needs validation')
+	end
 end

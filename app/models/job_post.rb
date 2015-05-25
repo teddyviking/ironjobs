@@ -10,6 +10,8 @@ class JobPost < ActiveRecord::Base
 
 	acts_as_taggable
 
+	after_create :send_admin_mail
+
 
 
 	scope :confirmed, -> { where(confirmed: true) }
@@ -17,5 +19,11 @@ class JobPost < ActiveRecord::Base
 
 	def user_is_company
 		errors.add(:company_type, "must be a company to create a Job Post") if self.company == nil
+	end
+
+	private
+
+	def send_admin_mail
+		AdminMailer.send_new_job_post_notification(self).deliver_now
 	end
 end
