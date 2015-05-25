@@ -34,11 +34,15 @@ class User < ActiveRecord::Base
 
 	def confirm_company
 		self.update(confirmed: true)
-		AdminMailer.send_activation(self).deliver_now
+		AdminMailer.send_company_activation(self).deliver_now
+	end
+
+	def confirm_job_post(job_post)
+		job_post.update(confirmed: true)
+		AdminMailer.send_job_post_activation(job_post).deliver_now
 	end
 
 
-	
 	private
 
 	def role_has_to_be_student_admin_or_company
