@@ -71,4 +71,19 @@ RSpec.describe User, type: :model do
 
   end
 
+  context "when admin confirms a company" do
+    let(:admin) { create(:admin)}
+    let(:new_company) { create(:company)}
+
+    it "changes the confirmed state" do
+      new_company.confirm_company
+      expect(new_company.confirmed).to eq(true)
+    end
+
+    it "sends an email to the company" do
+      expect { new_company.confirm_company }.to change { ActionMailer::Base.deliveries.count }.by(1)
+    end
+
+  end
+
 end

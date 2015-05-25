@@ -32,6 +32,13 @@ class User < ActiveRecord::Base
 
 	scope :confirmed_companies, -> { companies.where(confirmed: true)}
 
+	def confirm_company
+		self.update(confirmed: true)
+		AdminMailer.send_activation(self).deliver_now
+	end
+
+
+	
 	private
 
 	def role_has_to_be_student_admin_or_company
