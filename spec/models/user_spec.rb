@@ -67,6 +67,16 @@ RSpec.describe User, type: :model do
         company.update(twitter: "no")
         expect(company.confirmed).to eq(true)
       end
+
+      it "is invalid if situation is not filled" do
+        company = build(:company, situation: nil)
+        expect(company).to be_invalid
+      end
+
+      it "is invalid if  company name is not filled" do
+        company = build(:company, company_name: nil)
+        expect(company).to be_invalid
+      end
     end
 
   end
