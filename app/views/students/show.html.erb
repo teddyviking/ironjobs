@@ -1,11 +1,30 @@
-<h1><%= @student.name %></h1>
-<% if @student.searching %>
-	<p>I'm searching!</p>
-<% end %>
+<article class="col-md-8 inline floatnone valign-t">
 
-<% if @student.tag_list %>
-	<h2>Tags</h2>
-	<p><%= @student.tag_list %></p>
-<% end %>
+	<div class="panel panel-default">
+	  <div class="panel-company media">
+	  			<div class= "media-left media-middle"><%= image_tag @student.avatar.url(:thumb) %></div>
 
-<p><%= link_to "Edit your profile", edit_student_path(@student) %></p>
+	  	<div class="media-body">
+	  		<h3 class=" panel-title font biggest book block color white"><%= @student.name %></h3>
+		</div>
+	  </div>
+	  <div class="panel-body text-left">
+	  	<hr class="blue_bg">
+	    	<p class="font thin small"><strong>Description</strong>: <%= @student.description %> </p>
+	    	<p class="font thin small"><strong>Location</strong>: <%= @student.location %> </p>
+	    	<% if @student.url %><p class="font thin small"><strong>Web</strong>: <%= @student.url %> </p> <% end %>
+	    	<p class="font thin small"><strong>Email</strong>: <%= @student.email %> </p>
+	    	<p class="font thin small"><strong>Currently searching job</strong>: <%= @student.searching ? "Yes" : "No" %></p>
+	  </div>
+
+	  <div class= "panel-footer text-left">
+	  		<% if @student.tag_list %>
+				<div><strong>Tags</strong>: <%= @student.tag_list %></div>
+			<% end %>
+			<% if current_user.role == "admin" && @company.confirmed == false %>
+				<%= button_to "Confirm company!", company_confirmation_path(@company)  %>
+			<% end %>
+
+	  </div>
+	</div>
+</article>

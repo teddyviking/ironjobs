@@ -1,4 +1,5 @@
-<%= form_for @student, url: student_path(@student) do |f| %>
+<div class="center edit_profile col-md-7 col-centered  striped_bordered floatnone valign-t">
+    <%= form_for @student, url: student_path(@student) do |f| %>
 
  <% if @student.errors.any? %>
     <div id="error_explanation">
@@ -12,52 +13,65 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="col-md-5 inline floatnone valign-t">
+    <div class="field">
     <%= f.label :first_name %><br>
-    <%= f.text_field :first_name %>
+    <%= f.text_field :first_name, class: "form-control" %>
   </div>
   <div class="field">
     <%= f.label :last_name %><br>
-    <%= f.text_field :last_name %>
+    <%= f.text_field :last_name, class: "form-control" %>
   </div>
   <div class="field">
     <%= f.label :city %><br>
-    <%= f.text_field :location %>
+    <%= f.text_field :location, class: "form-control" %>
   </div>
   <div class="field">
     <%= f.label :email %><br>
-    <%= f.email_field :email %>
+    <%= f.email_field :email, class: "form-control" %>
   </div>
   <div class="field">
     <%= f.label :phone %><br>
-    <%= f.telephone_field :phone %>
+    <%= f.telephone_field :phone, class: "form-control" %>
   </div>
   <div class="field">
     <%= f.label :web_site %><br>
-    <%= f.url_field :url%>
+    <%= f.url_field :url, class: "form-control"%>
   </div>
   <div class="field">
     <%= f.label :github %><br>
-    <%= f.url_field :github%>
+    <%= f.url_field :github, class: "form-control"%>
   </div>
   <div class="field">
     <%= f.label :twitter %><br>
-    <%= f.url_field :twitter%>
+    <%= f.url_field :twitter, class: "form-control"%>
   </div>
   <div class="field">
     <%= f.label :linkedin %><br>
-    <%= f.url_field :linkedin%>
+    <%= f.url_field :linkedin, class: "form-control"%>
   </div>
   <div class="field">
-    <%= f.label :searching %><br>
-    <%= f.check_box :searching%>
+    <%= f.label :searching %>   <%= f.check_box :searching %>
   </div>
   <div class="field">
     <%= f.label :tags %><br>
-    <%= f.text_field :tag_list %>
+    <%= f.text_field :tag_list, class: "form-control" %>
   </div>
- 
-  <div class="actions">
-    <%= f.submit (@student.new_record? ? 'Create student' : 'Update your profile') %>
+  <div class="field">
+    <%= f.label "Upload a profile picture" %>
+    <%= f.file_field :avatar, class: "form-control" %>
   </div>
-<% end %>
+  
+    <div class="actions">
+    <%= f.submit (@student.new_record? ? 'Create student' : 'Update your profile'), class: "btn btn-default" %>
+  </div>
+  </div>
+  
+  <% end %>
+
+  </div>
+
+ </div>
+
+</section>
+
