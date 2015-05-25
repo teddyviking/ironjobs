@@ -5,23 +5,21 @@ class CompaniesController < ApplicationController
 	end
 
 	def show
-		
 		if current_user.role == "admin"
 			@company = User.companies.find_by_id(params[:id])
-			unless @company
-				@companies = User.where(role: "company")
-				flash.now[:alert] = "Company not found"
-				render "index", status: 301
-				return
-			end
+			company_not_found unless @company
 		else
 			@company = User.confirmed_companies.find_by_id(params[:id])
-			unless @company
-				@companies = User.where(role: "company")
-				flash.now[:alert] = "Company not found"
-				render "index", status: 301
-				return
-			end
+			company_not_found unless @company
 		end
+	end
+
+
+	private
+
+	def company_not_found
+		flash[:alert] = "Company not found"
+		redirect_to company_search_path
+		return
 	end
 end
