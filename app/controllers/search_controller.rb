@@ -10,8 +10,6 @@ class SearchController < ApplicationController
 				flash.now[:alert] = "Nothing found" if @students.empty?
 			end
 		end
-
-
 	end
 
 	def job_search	
@@ -26,14 +24,14 @@ class SearchController < ApplicationController
 	end
 
 	def company_search
-		if params[:query]
-			@tags = get_tags
-			@companies = User.confirmed_companies.tagged_with(@tags)
-			flash.now[:alert] = "No company matches your search. Try again, please." if @companies.empty?
-		else
-			@companies = User.confirmed_companies
-		end
+		@tags = get_tags		
+			respond_to do |format|
+				format.html {@companies = User.confirmed_companies}
+				format.js do
+					@companies = User.tagged_search(@tags, "company")
+					flash.now[:alert] = "Nothing found" if @companies.empty?
+				end
+			end
 	end
 
-	private
 end

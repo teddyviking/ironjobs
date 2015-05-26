@@ -52,13 +52,6 @@ class User < ActiveRecord::Base
 
 	end
 
-	def self.search_student_with_tags(tags)
-		return User.students if tags == ""
-		students = User.students.tagged_with(tags)
-	end
-
-
-	
 	private
 
 
@@ -89,9 +82,12 @@ class User < ActiveRecord::Base
    		AdminMailer.send_new_company_notification(self).deliver_now
 	end
 
-	
+	def self.search_student_with_tags(tags)
+		return User.students if tags == ""
+		students = User.students.tagged_with(tags)
+	end
 
-	def search_company_with_tags(tags)
+	def self.search_company_with_tags(tags)
 		return User.confirmed_companies if tags == ""
 		companies = User.confirmed_companies.tagged_with(tags)
 	end

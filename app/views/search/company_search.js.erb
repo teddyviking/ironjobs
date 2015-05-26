@@ -1,1 +1,7 @@
-('#filtered-companies').html("<%= escape_javascript render partial: "companies/company", collection: @companies");
+$('#filtered-companies').html("<%= escape_javascript render partial: 'companies/company', collection: @companies %>");
+
+
+if ($('#search-filters').html() === "") {
+		$('#search-filters').html("<%= escape_javascript render('filter')%>");
+} else {
+	$('#search-filters').html("");}

@@ -51,6 +51,6 @@ feature 'Company searches students' do
   	fill_in('query', :with => 'nocilla, pegamento')
   	click_on('Search')
 
-  	expect(page).to have_content("No student matches your search. Try again, please.")
+  	expect(page).to have_content("Nothing found")
   end
 end
