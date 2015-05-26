@@ -21,6 +21,11 @@ class JobPost < ActiveRecord::Base
 		errors.add(:company_type, "must be a company to create a Job Post") if self.company == nil
 	end
 
+	def self.tagged_search(tags)
+		return JobPost.confirmed if tags == ""
+		job_posts = JobPost.confirmed.tagged_with(tags)
+	end
+
 	private
 
 	def send_admin_mail

@@ -1,9 +1,6 @@
-<h1>Job Posts of <%= @company.name %></h1>
-
-<ul>
-	<% @job_posts. each do |post| %>
-		<li> <%= link_to post.position + " at " + post.location, company_job_post_path(@company, post) %></li>
-
-	<% end %>
-
-</ul>
+<% @job_posts.each do |post| %>
+	<li class="list-group-item">
+		<strong><%= link_to post.position,  company_job_post_path(post.company, post) %> </strong></br>
+		tags: <%= post.tag_list %>
+	</li>
+<% end %>

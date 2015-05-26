@@ -7,13 +7,8 @@
 		</div>			
 	  </div>
 	   <div class="panel-body text-left">	
-			<div class="list-group student-listing post-search">
-				<% @job_posts.each do |post| %>
-				<li class="list-group-item">
-					<strong><%= link_to post.position,  company_job_post_path(post.company, post) %> </strong></br>
-					tags: <%= post.tag_list %>
-				</li>
-				<% end %>
+			<div class="list-group student-listing post-search" id="filtered-job-posts">
+				<%= render @job_posts %>
 			</div>
 		</div>
 	</div>

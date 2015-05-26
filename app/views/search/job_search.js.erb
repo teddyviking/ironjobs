@@ -1,0 +1,20 @@
+$('#filtered-job-posts').html("<%= escape_javascript render(@job_posts)%>");
+
+
+if ($('#search-filters').html() === "") {
+		$('#search-filters').html("<%= escape_javascript render('filter')%>");
+} else {
+	$('#search-filters').html("")
+}
+
+// if ($('#app-notifications section').html() === "") {
+// 		$('#app-notifications section').html("<%= escape_javascript render('layouts/flash')%>");
+// } else {
+// 	$('#app-notifications section').html("")
+// }
+
+
+
+
+
+

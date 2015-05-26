@@ -1,0 +1,11 @@
+<% if @tags != "" && !@job_posts.empty?%>
+	Filtering by: <% @tags.each do |tag|%>
+		<strong><%= tag %> </strong>
+	<% end %>
+<% end %>
+<%= flash[:alert] if @job_posts.empty? %>
+
+<%= link_to set_route_to_filter, remote: true, class: "btn btn-default" do %>
+<span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> Reset tags
+
+<% end %>

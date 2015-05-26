@@ -10,8 +10,11 @@ module SearchHelper
 		end
 	end
 
+	protected
 
 	def get_tags
-		params[:query].split(", ")
+    	params[:query] ? params[:query].split(", ") : ""
 	end
+
+
 end

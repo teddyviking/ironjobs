@@ -7,13 +7,8 @@
 		</div>			
 	  </div>
 	   <div class="panel-body text-left">	
-			<div class="list-group student-listing post-search">
-				<% @companies.each do |company| %>
-				<li class="list-group-item">
-					<strong><%= link_to company.company_name, company_path(company)%> </strong></br>
-					tags: <%= company.tag_list %>
-				</li>
-				<% end %>
+			<div class="list-group student-listing post-search" id="filtered-companies">
+				<%= render partial: "companies/company", collection: @companies %>
 			</div>
 		</div>
 	</div>

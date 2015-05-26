@@ -1,4 +1,6 @@
 class SearchController < ApplicationController
+	include SearchHelper
+
 	def student_search
 		if params[:query]
 			@tags = get_tags
@@ -9,13 +11,14 @@ class SearchController < ApplicationController
 		end
 	end
 
-	def job_search
-		if params[:query]
-			@tags = get_tags
-			@job_posts = JobPost.confirmed.tagged_with(@tags)
-			flash.now[:alert] = "No job post matches your search. Try again, please." if @job_posts.empty?
-		else
-			@job_posts = JobPost.confirmed
+	def job_search	
+		@tags = get_tags		
+		respond_to do |format|
+			format.html {@job_posts = JobPost.confirmed}
+			format.js do
+				@job_posts = JobPost.tagged_search(@tags)
+				flash[:alert] = "Nothing found" if @job_posts.empty?
+			end
 		end
 	end
 
@@ -30,8 +33,4 @@ class SearchController < ApplicationController
 	end
 
 	private
-
-	def get_tags
-		params[:query].split(", ")
-	end
 end

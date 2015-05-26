@@ -8,12 +8,7 @@
 	  </div>
 	   <div class="panel-body text-left">	
 			<div class="list-group student-listing post-search">
-				<% @students.each do |student| %>
-				<li class="list-group-item">
-					<strong><%= link_to student.name, student_path(student)%></strong></br>
-					tags: <%=student.tag_list.to_s%>
-				</li>
-			<% end %>
+				<%= render partial: "students/student", collection: @students %>
 			</div>
 		</div>
 	</div>
