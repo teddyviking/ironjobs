@@ -13,8 +13,8 @@ class DashboardController < ApplicationController
   private
 
   def set_admin_notifications
-    flash[:companies] = create_pending_confirmation_message(@pending_companies) if !@pending_companies.empty?
-    flash[:job_posts] = create_pending_confirmation_message(@pending_job_posts) if !@pending_job_posts.empty? 
+    flash[:companies] = create_pending_confirmation_message(@pending_companies) unless @pending_companies.empty?
+    flash[:job_posts] = create_pending_confirmation_message(@pending_job_posts) unless @pending_job_posts.empty? 
     (flash[:notice] = "Nothing pending") if @pending_companies.empty? && @pending_job_posts.empty?
   end
 end

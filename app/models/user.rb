@@ -28,67 +28,67 @@ class User < ActiveRecord::Base
   after_create :send_admin_mail, if: :is_a_company?
 
 
-	def name
-		first_name + " " + last_name
-	end
+  def name
+    first_name + " " + last_name
+  end
 
-	def confirm_company
-		self.update(confirmed: true)
-		AdminMailer.send_company_activation(self).deliver_now
-	end
+  def confirm_company
+    self.update(confirmed: true)
+    AdminMailer.send_company_activation(self).deliver_now
+  end
 
-	def confirm_job_post(job_post)
-		job_post.update(confirmed: true)
-		AdminMailer.send_job_post_activation(job_post).deliver_now
-	end
-
-
-	def self.tagged_search(tags, role)
-		if role == "student"
-			search_student_with_tags(tags)
-		elsif role == "company"
-			search_company_with_tags(tags)
-		end
-
-	end
-
-	private
+  def confirm_job_post(job_post)
+    job_post.update(confirmed: true)
+    AdminMailer.send_job_post_activation(job_post).deliver_now
+  end
 
 
-	def searching_is_present_in_students_and_companies
-		if role != "admin" && searching.nil?
-			errors.add(:searching, "must include searching status")
-		end
-	end
+  def self.tagged_search(tags, role)
+    if role == "student"
+      search_student_with_tags(tags)
+    elsif role == "company"
+      search_company_with_tags(tags)
+    end
 
-	def add_pending_confirmation
-		self.confirmed = false if self.new_record?
-		self
-	end
+  end
 
-	def is_a_company?
-		self.role == "company"
-	end
+  private
 
-	def company_validations
-		if  situation.nil?
-			errors.add(:situation, "must include situation of the company")
-		elsif company_name.nil?
-			errors.add(:company_name, "must include company name")
-		end
-	end
 
-	def send_admin_mail
-   		AdminMailer.send_new_company_notification(self).deliver_now
-	end
+  def searching_is_present_in_students_and_companies
+    if role != "admin" && searching.nil?
+      errors.add(:searching, "must include searching status")
+    end
+  end
 
-	def self.search_student_with_tags(tags)
-		return User.students if tags == ""
-		students = User.students.tagged_with(tags)
-	end
+  def add_pending_confirmation
+    self.confirmed = false if self.new_record?
+    self
+  end
 
-	def self.search_company_with_tags(tags)
-		return User.confirmed_companies if tags == ""
-		companies = User.confirmed_companies.tagged_with(tags)
-	end
+  def is_a_company?
+    self.role == "company"
+  end
+
+  def company_validations
+    if  situation.nil?
+      errors.add(:situation, "must include situation of the company")
+    elsif company_name.nil?
+      errors.add(:company_name, "must include company name")
+    end
+  end
+
+  def send_admin_mail
+      AdminMailer.send_new_company_notification(self).deliver_now
+  end
+
+  def self.search_student_with_tags(tags)
+    return User.students if tags == ""
+    students = User.students.tagged_with(tags)
+  end
+
+  def self.search_company_with_tags(tags)
+    return User.confirmed_companies if tags == ""
+    companies = User.confirmed_companies.tagged_with(tags)
+  end
 end
