@@ -6,8 +6,9 @@ class User < ActiveRecord::Base
 
   before_validation :add_pending_confirmation, if: :is_a_company?
 
-  validates :first_name, :last_name, :email, :location, :role, presence: true
+  validates :first_name, :last_name, :email, :location, :role, :confirmed, presence: true
   validates :role, inclusion: { in: %w(student admin company) }
+  validates :confirmed, inclusion: { in: %w(unconfirmed confirmed denied) }
   validates :email, uniqueness: true
   validate  :searching_is_present_in_students_and_companies
   validate :company_validations, if: :is_a_company? 

@@ -1,6 +1,8 @@
 class JobPost < ActiveRecord::Base
 
-  validates :description, :salary, :contract_type, :position, presence: true
+  validates :description, :salary, :contract_type, :position, :confirmed, presence: true
+  validates :confirmed, inclusion: { in: %w(unconfirmed confirmed denied) }
+
   validate :user_is_company
 
 

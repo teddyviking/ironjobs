@@ -71,7 +71,7 @@ students = create_students(20, my_tags)
 companies = create_companies(15, my_tags)
 confirmed_companies = User.companies.sample(rand(5..10))
 confirmed_companies.each do |company|
-  company.confirmed = true
+  company.confirmed = "confirmed"
   company.save
 end
 
@@ -80,7 +80,7 @@ admin = create_admin(1)
 job_posts = companies.each{|company| create_job_posts(3, company, my_tags)}
 confirmed_jp= JobPost.all.sample(rand(12..18))
 confirmed_jp.each do |job_post| 
-  job_post.confirmed = true
+  job_post.confirmed = "confirmed"
   job_post.save
 end
 

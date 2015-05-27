@@ -6,7 +6,7 @@ feature 'Admin dashboard' do
 
     @admin = create(:admin)
     @companies = create_list(:company, 10)
-    @companies.map{|company| company.update(confirmed: true)}
+    @companies.map{|company| company.update(confirmed: "confirmed")}
   end
 
   scenario 'user logs in as an admin' do
