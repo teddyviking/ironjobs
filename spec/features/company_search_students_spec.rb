@@ -17,7 +17,7 @@ feature 'Company searches students' do
 
   end
 
-  scenario 'Filtering by one tag' do
+  scenario 'Filtering by one tag', :js => true do
   	@students.last.tag_list.add('node')
     @students.last.save
 
@@ -26,12 +26,12 @@ feature 'Company searches students' do
   	click_on('Search')
 
 
-  	expect(page).to have_content('node')
+  	expect(page).to have_content('Filtering by: node')
 
 
   end
 
-  scenario 'Filtering by two tags separeted by ", "' do
+  scenario 'Filtering by two tags separeted by ", "', :js => true do
   	@students.last.tag_list.add(['parrot', 'strawberry'])
   	@students.last.save
 
@@ -40,12 +40,12 @@ feature 'Company searches students' do
   	fill_in('query', :with => 'parrot, strawberry')
   	click_on('Search')
 
-    expect(find('.post-search')).to have_content('parrot')
-    expect(find('.post-search')).to have_content('strawberry')
+
+    expect(page).to have_content('Filtering by: parrot strawberry') 
 
   end
 
-  scenario 'Finding no results when filtering' do
+  scenario 'Finding no results when filtering', :js => true do
   	visit student_search_path
   	
   	fill_in('query', :with => 'nocilla, pegamento')
