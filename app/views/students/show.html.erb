@@ -21,10 +21,6 @@
 	  		<% if @student.tag_list %>
 				<div><strong>Tags</strong>: <%= @student.tag_list %></div>
 			<% end %>
-			<% if current_user.role == "admin" && @company.confirmed == false %>
-				<%= button_to "Confirm company!", company_confirmation_path(@company)  %>
-			<% end %>
-
 	  </div>
 	</div>
 </article>

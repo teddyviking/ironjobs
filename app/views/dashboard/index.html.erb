@@ -2,13 +2,7 @@
 	<h1 class="font book big center padding_bottom color dark_grey">Welcome <span class="font bold"><%= current_user.first_name %></span></h1>
 
 	<div class="row center">
-		<% if current_user.role == "admin" %>
-			<%= render 'admin' %>
-		<% elsif current_user.role == "company" %>
-			<%= render 'company' %>
-		<% elsif current_user.role == "student" %>
-			<%= render 'student' %>
-		<% end %>
+		<%= select_user_dashboard %>
 	</div>
 	
 

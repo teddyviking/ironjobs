@@ -1,10 +1,6 @@
 <h1>Companies</h1>
 
 <ul>
-	<% @companies.each do |company| %>
-		<li><%= link_to company.company_name, company_path(company) %></br>
-			<%= company.description %></li>
-
-	<% end %>
+	<%= render partial: "companies/company", collection: @companies %>
 
 </ul>

@@ -12,16 +12,9 @@
     	<%= render 'layouts/header' %>
     </header>
 
-    <div id="app-notifications">
-
-      <% if params[:controller] == "dashboard" %>
-        <%=  render 'dashboard/notifications' %>
-      <% end %>
-
+    <div class="app-notifications" id="app-notifications">
       <% if flash.any? %>
-
         <%= render 'layouts/flash' %>
-
       <% end %>
 
     </div>

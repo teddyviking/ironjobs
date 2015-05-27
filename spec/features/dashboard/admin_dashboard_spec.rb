@@ -27,7 +27,7 @@ feature 'Admin dashboard' do
   	visit dashboard_path
 
   	expect(page).to have_content("Nothing pending")
-	expect(find('.notifications')).to have_selector('li', count: 1)
+	  expect(find('.alert-info')).to have_selector('section', count: 1)
 
   end
 
@@ -40,7 +40,7 @@ feature 'Admin dashboard' do
 
   	  visit dashboard_path
 
-  	  expect(page).to have_content("1 pending company confirmation request")
+  	  expect(page).to have_content("1 pending User confirmation request")
   		expect(page).to have_content(:link_or_button, new_company.company_name)
 
   		click_on(new_company.company_name)
@@ -52,7 +52,7 @@ feature 'Admin dashboard' do
   		expect(current_path).to eq(dashboard_path)
   		expect(page).to have_content(new_company.company_name + " is now active")
   		expect(page).to have_content("Nothing pending")
-  		expect(find('.notifications')).to have_selector('li', count: 1)
+  		expect(find('.alert-info')).to have_selector('section', count: 2)
   	end
 
 	 scenario 'there are multiple companies waiting for confirmation' do
@@ -61,7 +61,7 @@ feature 'Admin dashboard' do
 
 	  	visit dashboard_path
 
-	  	expect(page).to have_content("2 pending company confirmation requests")
+	  	expect(page).to have_content("2 pending User confirmation requests")
 		expect(page).to have_content(:link_or_button, new_companies[0].company_name)
 		expect(page).to have_content(:link_or_button, new_companies[1].company_name)
 	  end
@@ -75,7 +75,7 @@ feature 'Admin dashboard' do
 
 	  	visit dashboard_path
 
-	  	expect(page).to have_content("1 pending job post validation request")
+	  	expect(page).to have_content("1 pending Job Post confirmation request")
 		  expect(page).to have_content(:link_or_button, new_job_post_path)
 
 		  click_on(new_job_post_path)
@@ -87,18 +87,18 @@ feature 'Admin dashboard' do
   		expect(current_path).to eq(dashboard_path)
   		expect(page).to have_content(new_job_post_path + " is now active")
   		expect(page).to have_content("Nothing pending")
-  		expect(find('.notifications')).to have_selector('li', count: 1)
+  		expect(find('.alert-info')).to have_selector('section', count: 2)
 
   	end
 
-  	scenario 'there are multiple job posts waiting for validation' do
+  	scenario 'there are multiple job posts waiting for confirmation' do
   		new_job_posts = []
   		2.times{new_job_posts << @companies.first.job_posts.create(attributes_for(:job_post))}
 	  	login_as(@admin, :scope => :user)
 
 	  	visit dashboard_path
 
-	  	expect(page).to have_content("2 pending job post validation request")
+	  	expect(page).to have_content("2 pending Job Post confirmation request")
 		expect(page).to have_content(:link_or_button, new_job_posts[0].position + " by " + new_job_posts[0].company.company_name)
 		expect(page).to have_content(:link_or_button, new_job_posts[0].position + " by " + new_job_posts[0].company.company_name)
   	end
