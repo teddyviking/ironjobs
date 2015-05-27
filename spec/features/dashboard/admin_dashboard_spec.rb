@@ -155,8 +155,4 @@ feature 'Admin dashboard' do
       expect(source).not_to include(company_job_post_path(new_job_post.company, new_job_post))
     end
   end
-
-  
-
- 
 end

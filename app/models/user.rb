@@ -41,12 +41,6 @@ class User < ActiveRecord::Base
     self.update(confirmed: "denied")
   end
 
-  def confirm_job_post(job_post)
-    job_post.update(confirmed: true)
-    AdminMailer.send_job_post_activation(job_post).deliver_now
-  end
-
-
   def self.tagged_search(tags, role)
     if role == "student"
       search_student_with_tags(tags)

@@ -111,16 +111,16 @@ RSpec.describe User, type: :model do
 
   context "when admin confirms a job post" do
     let(:admin) { create(:admin)}
-    let(:company) {create(:company, confirmed: true)}
+    let(:company) {create(:company, confirmed: "confirmed")}
     let(:new_job_post) { company.job_posts.create(attributes_for(:job_post))}
 
     it "changes the confirmed state" do
-      admin.confirm_job_post(new_job_post)
-      expect(new_job_post.confirmed).to eq(true)
+      new_job_post.confirm_job_post
+      expect(new_job_post.confirmed).to eq("confirmed")
     end
 
     it "sends an email to the company" do
-      expect { admin.confirm_job_post(new_job_post) }.to change { ActionMailer::Base.deliveries.count }.by(3)
+      expect { new_job_post.confirm_job_post }.to change { ActionMailer::Base.deliveries.count }.by(3)
     end
 
   end

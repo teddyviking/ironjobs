@@ -16,12 +16,15 @@ class AdminController < ApplicationController
 
   def job_post_confirmation
     @job_post = JobPost.find_by_id(params[:id])
-    current_user.confirm_job_post(@job_post)
+    @job_post.confirm_job_post
     flash[notice] = @job_post.position + " by " + @job_post.company.company_name + " is now active"
     redirect_to dashboard_path
   end
 
   def job_post_denial
+    @job_post = JobPost.find_by_id(params[:id])
+    @job_post.deny_job_post
+    flash[notice] = @job_post.position + " by " + @job_post.company.company_name + " has been denied"
     redirect_to dashboard_path
   end
 end
