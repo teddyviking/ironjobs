@@ -2,6 +2,6 @@ $('#filtered-companies').html("<%= escape_javascript render partial: 'companies/
 
 
 if ($('#search-filters').html() === "") {
-		$('#search-filters').html("<%= escape_javascript render('filter')%>");
+    $('#search-filters').html("<%= escape_javascript render('filter')%>");
 } else {
-	$('#search-filters').html("");}
+  $('#search-filters').html("");}

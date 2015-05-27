@@ -1,17 +1,17 @@
 <div class="container">
 
-	<%= form_tag(set_route_to_filter , method: "get", class: "navbar-form navbar-left", remote: true) do %>
-	  <div class="field form-group">
-		<%= label_tag(:query, "Search for:") %>
-	 	<%= text_field_tag :query, "", class: "form-control" %>
-	  </div>
-	  
-	  <%= submit_tag("Search", class: "btn btn-default") %>
+  <%= form_tag(set_route_to_filter , method: "get", class: "navbar-form navbar-left", remote: true) do %>
+    <div class="field form-group">
+    <%= label_tag(:query, "Search for:") %>
+    <%= text_field_tag :query, "", class: "form-control" %>
+    </div>
+    
+    <%= submit_tag("Search", class: "btn btn-default") %>
 
-	  
-		<div class="search-filters form-group" id="search-filters"></div>
-		
+    
+    <div class="search-filters form-group" id="search-filters"></div>
+    
 
-	<% end %>
+  <% end %>
 
 </div>

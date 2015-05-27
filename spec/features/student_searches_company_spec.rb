@@ -3,15 +3,15 @@ require 'rails_helper'
 
 feature 'Student searches companies' do
   background do
-  	@companies = []
-  	20.times {|n| @companies << create(:company)}
+    @companies = []
+    20.times {|n| @companies << create(:company)}
     @companies.map{|company| company.update(confirmed:true)}
   end
   scenario 'Displaying all the companies' do
     visit company_search_path
 
     @companies.each do |company|
-    	expect(source).to include(company_path(company))
+      expect(source).to include(company_path(company))
     end
 
     expect(find('.post-search')).to have_selector('li', count: 20)
@@ -19,37 +19,37 @@ feature 'Student searches companies' do
   end
 
   scenario 'Filtering by one tag', :js => true do
-  	@companies.last.tag_list.add('node')
+    @companies.last.tag_list.add('node')
     @companies.last.save
 
     visit company_search_path
-  	fill_in(:query, :with => 'node')
-  	click_on('Search')
+    fill_in(:query, :with => 'node')
+    click_on('Search')
 
 
-  	expect(page).to have_content('Filtering by: node')
+    expect(page).to have_content('Filtering by: node')
 
 
   end
 
   scenario 'Filtering by two tags separeted by ", "', :js => true do
-  	@companies.last.tag_list.add(['parrot', 'strawberry'])
-  	@companies.last.save
+    @companies.last.tag_list.add(['parrot', 'strawberry'])
+    @companies.last.save
 
-  	visit company_search_path
+    visit company_search_path
 
-  	fill_in('query', :with => 'parrot, strawberry')
-  	click_on('Search')
+    fill_in('query', :with => 'parrot, strawberry')
+    click_on('Search')
 
     expect(page).to have_content('Filtering by: parrot strawberry')
   end
 
   scenario 'Finding no results when filtering', :js => true do
-  	visit company_search_path
-  	
-  	fill_in('query', :with => 'nocilla, pegamento')
-  	click_on('Search')
+    visit company_search_path
+    
+    fill_in('query', :with => 'nocilla, pegamento')
+    click_on('Search')
 
-  	expect(page).to have_content("Nothing found")
+    expect(page).to have_content("Nothing found")
   end
 end
