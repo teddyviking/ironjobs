@@ -24,8 +24,8 @@
         <div><strong>Tags</strong>: <%= @company.tag_list %></div>
       <% end %>
       <% if current_user.role == "admin" && @company.confirmed == "unconfirmed" %>
-        <%= button_to "Confirm company!", company_confirmation_path(@company), class: "btn btn-default"  %>
-        <%= button_to "Deny company", company_denial_path(@company), class: "btn btn-default" %>
+        <div class="inline"><%= button_to "Confirm company!", company_confirmation_path(@company), class: "btn btn-default"  %></div>
+        <div class="inline"><%= button_to "Deny company", company_denial_path(@company), class: "inline btn btn-default " %></div>
       <% end %>
 
     </div>
