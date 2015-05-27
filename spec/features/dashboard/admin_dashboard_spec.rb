@@ -105,9 +105,9 @@ feature 'Admin dashboard' do
   end
 
 
-  context 'denying a new company' do
+  context 'denying companies and job posts' do
     # let(:new_company) { create(:company) }
-    scenario 'there is a company pending on validation' do
+    scenario 'deny a company pending on validation' do
       new_company = create(:company,  company_name: "denied company")
       login_as(@admin, :scope => :user)
 
@@ -119,6 +119,19 @@ feature 'Admin dashboard' do
       expect(current_path).to eq(dashboard_path)
       expect(page).to have_content(new_company.company_name + " has been denied")
       expect(source).not_to include(company_path(new_company))
+    end
+
+    scenario 'deny a job post pending on validation' do
+      new_job_post = @companies.first.job_posts.create(attributes_for(:job_post))
+      login_as(@admin, :scope => :user)
+
+      visit company_job_post_path(new_job_post.company, new_job_post)
+
+      click_on("Deny job post")
+
+      expect(current_path).to eq(dashboard_path)
+      expect(page).to have_content(new_job_post.position + " by " + new_job_post.company.company_name + " has been denied")
+      expect(source).not_to include(company_job_post_path(new_job_post.company, new_job_post))
     end
   end
 
