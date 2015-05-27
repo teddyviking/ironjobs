@@ -1,47 +1,48 @@
 <article class="col-md-8 inline floatnone valign-t">
 
-	<div class="panel panel-default">
-	  <div class="panel-company media">
-	  			<div class= "media-left media-middle"><%= image_tag @company.avatar.url(:thumb) %></div>
+  <div class="panel panel-default">
+    <div class="panel-company media">
+          <div class= "media-left media-middle"><%= image_tag @company.avatar.url(:thumb) %></div>
 
-	  	<div class="media-body">
-	  		<h3 class=" panel-title font biggest book block color white"><%= @company.company_name %></h3>
-		</div>
-	  </div>
-	  
-	  <div class="panel-body text-left">
-	  	<hr class="blue_bg">
-	    	<p class="font thin small"><strong>Description</strong>: <%= @company.description %> </p>
-	    	<p class="font thin small"><strong>Location</strong>: <%= @company.location %> </p>
-	    	<% if @company.url %><p class="font thin small"><strong>Web</strong>: <%= @company.url %> </p> <% end %>
-	    	<p class="font thin small"><strong>Situation of the company</strong>: <%= @company.situation %> </p>
-	    	<p class="font thin small"><strong>Person to contact</strong>: <%= @company.name %> </p>
-	    	<p class="font thin small"><strong>Email</strong>: <%= @company.email %> </p>
-	  </div>
+      <div class="media-body">
+        <h3 class=" panel-title font biggest book block color white"><%= @company.company_name %></h3>
+    </div>
+    </div>
+    
+    <div class="panel-body text-left">
+      <hr class="blue_bg">
+        <p class="font thin small"><strong>Description</strong>: <%= @company.description %> </p>
+        <p class="font thin small"><strong>Location</strong>: <%= @company.location %> </p>
+        <% if @company.url %><p class="font thin small"><strong>Web</strong>: <%= @company.url %> </p> <% end %>
+        <p class="font thin small"><strong>Situation of the company</strong>: <%= @company.situation %> </p>
+        <p class="font thin small"><strong>Person to contact</strong>: <%= @company.name %> </p>
+        <p class="font thin small"><strong>Email</strong>: <%= @company.email %> </p>
+    </div>
 
-	  <div class= "panel-footer text-left">
-	  		<% if @company.tag_list %>
-				<div><strong>Tags</strong>: <%= @company.tag_list %></div>
-			<% end %>
-			<% if current_user.role == "admin" && @company.confirmed == false %>
-				<%= button_to "Confirm company!", company_confirmation_path(@company), class: "btn btn-default"  %>
-			<% end %>
+    <div class= "panel-footer text-left">
+        <% if @company.tag_list %>
+        <div><strong>Tags</strong>: <%= @company.tag_list %></div>
+      <% end %>
+      <% if current_user.role == "admin" && @company.confirmed == "unconfirmed" %>
+        <%= button_to "Confirm company!", company_confirmation_path(@company), class: "btn btn-default"  %>
+        <%= button_to "Deny company", company_denial_path(@company), class: "btn btn-default" %>
+      <% end %>
 
-	  </div>
-	</div>
+    </div>
+  </div>
 </article>
 
 <aside class="col-md-3 inline floatnone valign-t">
-	<div class="panel panel-default">
-		<div class="panel-body text-left">
-			<% if @company.job_posts %>
-				<h2 class="font big">Open positions</h2>
-				<ul><% @company.job_posts.each do |post| %>
-					<li class="font tiny"><%= link_to post.position,  company_job_post_path(@company, post) %></li>
+  <div class="panel panel-default">
+    <div class="panel-body text-left">
+      <% if @company.job_posts %>
+        <h2 class="font big">Open positions</h2>
+        <ul><% @company.job_posts.each do |post| %>
+          <li class="font tiny"><%= link_to post.position,  company_job_post_path(@company, post) %></li>
 
-					<% end %>
-				</ul>
-			<% end %>
-		</div>
-	</div>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+  </div>
 </aside>

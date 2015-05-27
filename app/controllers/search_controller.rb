@@ -24,7 +24,7 @@ class SearchController < ApplicationController
   end
 
   def company_search
-    @tags = get_tags    
+    @tags = get_tags
       respond_to do |format|
         format.html {@companies = User.confirmed_companies}
         format.js do

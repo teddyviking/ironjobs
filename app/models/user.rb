@@ -33,8 +33,12 @@ class User < ActiveRecord::Base
   end
 
   def confirm_company
-    self.update(confirmed: true)
+    self.update(confirmed: "confirmed")
     AdminMailer.send_company_activation(self).deliver_now
+  end
+
+  def deny_company
+    self.update(confirmed: "denied")
   end
 
   def confirm_job_post(job_post)
@@ -62,7 +66,7 @@ class User < ActiveRecord::Base
   end
 
   def add_pending_confirmation
-    self.confirmed = false if self.new_record?
+    self.confirmed = "unconfirmed" if self.new_record?
     self
   end
 

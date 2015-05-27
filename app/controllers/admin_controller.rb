@@ -7,6 +7,13 @@ class AdminController < ApplicationController
     redirect_to dashboard_path
   end
 
+  def company_denial
+    @company = User.companies.find_by_id(params[:id])
+    @company.deny_company
+    flash[notice] = @company.company_name + " has been denied"
+    redirect_to dashboard_path
+  end
+
   def job_post_confirmation
     @job_post = JobPost.find_by_id(params[:id])
     current_user.confirm_job_post(@job_post)
