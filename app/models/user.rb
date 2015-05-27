@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
 
   scope :students, -> { where(role: "student") }
   scope :companies, -> { where(role: "company")}
-  scope :confirmed_companies, -> { companies.where(confirmed: true)}
+  scope :confirmed_companies, -> { companies.where(confirmed: "confirmed")}
 
   after_create :send_admin_mail, if: :is_a_company?
 

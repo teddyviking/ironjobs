@@ -5,7 +5,7 @@ feature 'Student searches companies' do
   background do
     @companies = []
     20.times {|n| @companies << create(:company)}
-    @companies.map{|company| company.update(confirmed:true)}
+    @companies.map{|company| company.update(confirmed:"confirmed")}
   end
   scenario 'Displaying all the companies' do
     visit company_search_path
