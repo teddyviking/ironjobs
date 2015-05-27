@@ -1,31 +1,32 @@
 <article class="col-md-8 inline floatnone valign-t">
-	<div class="panel panel-default">
-	  <div class="panel-company">
-	    <h3 class="panel-title font biggest book block color white"><%= @job_post.position + " at " + @job_post.company.company_name %></h3>
-	  </div>
-	   <div class="panel-body text-left">
-	  	<hr class="blue_bg">
-	    	<p class="font thin small"><strong>Description</strong>: <%= @job_post.description %> </p>
-	    	<p class="font thin small"><strong>Salary</strong>: <%= @job_post.salary %> </p>
-	    	<p class="font thin small"><strong>Type of contract</strong>: <%= @job_post.contract_type %> </p>
-	    	<p class="font thin small"><strong>Location</strong>: <%= @job_post.location %> </p>
-	    	<p class="font thin small"><strong>Person to contact</strong>: <%= @job_post.company.name %> </p>
-	    	<p class="font thin small"><strong>Email</strong>: <%= @job_post.company.email %> </p>
-	  </div>
+  <div class="panel panel-default">
+    <div class="panel-company">
+      <h3 class="panel-title font biggest book block color white"><%= @job_post.position + " at " + @job_post.company.company_name %></h3>
+    </div>
+     <div class="panel-body text-left">
+      <hr class="blue_bg">
+        <p class="font thin small"><strong>Description</strong>: <%= @job_post.description %> </p>
+        <p class="font thin small"><strong>Salary</strong>: <%= @job_post.salary %> </p>
+        <p class="font thin small"><strong>Type of contract</strong>: <%= @job_post.contract_type %> </p>
+        <p class="font thin small"><strong>Location</strong>: <%= @job_post.location %> </p>
+        <p class="font thin small"><strong>Person to contact</strong>: <%= @job_post.company.name %> </p>
+        <p class="font thin small"><strong>Email</strong>: <%= @job_post.company.email %> </p>
+    </div>
 
-	  <div class= "panel-footer text-left">
-	  		<div>
-	  			<% if @job_post.tag_list %>
-				<div><strong>Tags</strong>: <%= @job_post.tag_list %></div>
-				<% end %>
-			</div>
-			<div>
-				<% if current_user.role == "student" %>
-					<%= button_to "Apply!", student_applications_path(current_user), params: { job_post_id: @job_post.id }  %>
-				<% elsif current_user.role == "admin" && @job_post.confirmed == false %>
-					<%= button_to "Validate job post", job_post_confirmation_path(@job_post) %>
-				<% end %>
-			</div>
-	  </div>
-	</div>
+    <div class= "panel-footer text-left">
+        <div>
+          <% if @job_post.tag_list %>
+        <div><strong>Tags</strong>: <%= @job_post.tag_list %></div>
+        <% end %>
+      </div>
+      <div>
+        <% if current_user.role == "student" %>
+          <%= button_to "Apply!", student_applications_path(current_user), params: { job_post_id: @job_post.id }  %>
+        <% elsif current_user.role == "admin" && @job_post.confirmed == "unconfirmed" %>
+          <div class="inline"><%= button_to "Validate job post", job_post_confirmation_path(@job_post) %></div>
+          <div class="inline"><%= button_to "Deny job post", job_post_denial_path(@job_post) %></div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </article>

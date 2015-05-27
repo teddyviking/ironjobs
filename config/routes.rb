@@ -16,10 +16,11 @@ Rails.application.routes.draw do
   #Admin
   get '/company_confirmation/:id' => "admin#company_confirmation", as: :company_confirmation
   post '/company_confirmation/:id' => "admin#company_confirmation"
-  # get '/company_denial/:id' => "admin#company_denial", 
   post '/company_denial/:id' => "admin#company_denial", as: :company_denial
   get '/job_post_confirmation/:id' => "admin#job_post_confirmation", as: :job_post_confirmation
   post '/job_post_confirmation/:id' => "admin#job_post_confirmation"
+  post '/job_post_denial/:id' => "admin#job_post_denial", as: :job_post_denial
+
 
 
   #Students and job applications

@@ -14,7 +14,7 @@ class JobPost < ActiveRecord::Base
 
 
 
-	scope :confirmed, -> { where(confirmed: true) }
+	scope :confirmed, -> { where(confirmed: "confirmed") }
 
 
 	def user_is_company

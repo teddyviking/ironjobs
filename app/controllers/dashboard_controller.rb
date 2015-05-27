@@ -4,7 +4,7 @@ class DashboardController < ApplicationController
   def index
     if current_user.role == "admin"
       @pending_companies = User.companies.where(confirmed: "unconfirmed")
-      @pending_job_posts = JobPost.where(confirmed: false)
+      @pending_job_posts = JobPost.where(confirmed: "unconfirmed")
 
       set_admin_notifications
     end

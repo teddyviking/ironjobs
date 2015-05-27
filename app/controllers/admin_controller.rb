@@ -20,4 +20,8 @@ class AdminController < ApplicationController
     flash[notice] = @job_post.position + " by " + @job_post.company.company_name + " is now active"
     redirect_to dashboard_path
   end
+
+  def job_post_denial
+    redirect_to dashboard_path
+  end
 end
