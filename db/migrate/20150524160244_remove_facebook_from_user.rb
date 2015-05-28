@@ -1,5 +1,5 @@
 class RemoveFacebookFromUser < ActiveRecord::Migration
   def change
-  	remove_column :users, :facebook
+    remove_column :users, :facebook
   end
 end

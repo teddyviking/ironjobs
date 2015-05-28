@@ -2,10 +2,10 @@ require 'rails_helper'
 
 
 feature 'Student Dashboard' do
-	background do
-		@students = create_list(:student, 10)
-  		@user = @students.first
-	end
+  background do
+    @students = create_list(:student, 10)
+      @user = @students.first
+  end
 
   scenario 'A student logs in the app' do
        visit new_user_session_path

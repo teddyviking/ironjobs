@@ -1,17 +1,15 @@
 <article class="col-md-8 inline floatnone valign-t">
-	<div class="panel panel-default">
-	  <div class="panel-heading">
-	  	<h3 class="panel-title font biggest book block color black">Search students</h3>
-		<div>
-			<%= render 'form' %> 
-		</div>			
-	  </div>
-	   <div class="panel-body text-left">	
-			<div class="list-group student-listing post-search" id="filtered-students">
-				<%= render partial: "students/student", collection: @students %>
-			</div>
-		</div>
-	</div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title font biggest book block color black">Search students</h3>
+    <div>
+      <%= render 'form' %> 
+    </div>
+    </div>
+     <div class="panel-body text-left"> 
+      <div class="list-group student-listing post-search" id="filtered-students">
+        <%= render partial: "students/student", collection: @students %>
+      </div>
+    </div>
+  </div>
 </article >
-
-	

@@ -2,9 +2,9 @@ require "rails_helper"
 
 RSpec.describe AdminMailer, type: :mailer do
   describe "company activation email" do
-  	let(:create_company) {create(:company)}
-  	let(:mail) {AdminMailer.send_company_activation(create_company)}
-  	it 'renders the subject' do
+    let(:create_company) {create(:company)}
+    let(:mail) {AdminMailer.send_company_activation(create_company)}
+    it 'renders the subject' do
       expect(mail.subject).to eql('Your Ironjobs account has been activated')
     end
 
@@ -18,11 +18,11 @@ RSpec.describe AdminMailer, type: :mailer do
   end
 
   describe "job post confirmation email" do
-  	let(:company) {create(:company, confirmed: true)}
+    let(:company) {create(:company, confirmed: true)}
     let(:new_job_post) { company.job_posts.create(attributes_for(:job_post))}
-  	let(:mail) {AdminMailer.send_job_post_activation(new_job_post)}
+    let(:mail) {AdminMailer.send_job_post_activation(new_job_post)}
 
-  	it 'renders the subject' do
+    it 'renders the subject' do
       expect(mail.subject).to eql('Your job post has been accepted')
     end
 

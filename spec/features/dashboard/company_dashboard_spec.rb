@@ -2,11 +2,11 @@ require 'rails_helper'
 
 
 feature 'Company Dashboard' do
-	background do
-		@companies = create_list(:company, 10)
-  		@companies.map{|company| company.update(confirmed: true)}
-  		@user = @companies.first
-	end
+  background do
+    @companies = create_list(:company, 10)
+      @companies.map{|company| company.update(confirmed: true)}
+      @user = @companies.first
+  end
 
   scenario 'A company logs in the app' do
        visit new_user_session_path

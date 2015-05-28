@@ -11,56 +11,56 @@ html {
 }
 
 body {
-	background: #fff;
-	margin-bottom: 60px;
+  background: #fff;
+  margin-bottom: 60px;
 }
 
 
 footer {
     background: $dark-grey;
     position: absolute;
-  	bottom: 0;
+    bottom: 0;
     font-weight: bold;
     color: $white;
     height: 100px;
-	padding-top: 38px;
-  	width: 100%;
+  padding-top: 38px;
+    width: 100%;
 }
 
 
 .navbar {
-	background: $dark_grey;
-	margin-bottom: 0px;
-	border-radius: 0px;
-		ul {
-			list-style:none;
-		}
-		li {
-			color: $white;
-			font-weight: 700;
-			border: 0px;
-			a {
-				border:0px;
-			}
-		}
-		li:hover {
-			color: #ff9900;
-		}
-		.logo {
-			width:120px;
-			display:inline-block;
-			margin-left: 100px;
-		}
+  background: $dark_grey;
+  margin-bottom: 0px;
+  border-radius: 0px;
+    ul {
+      list-style:none;
+    }
+    li {
+      color: $white;
+      font-weight: 700;
+      border: 0px;
+      a {
+        border:0px;
+      }
+    }
+    li:hover {
+      color: #ff9900;
+    }
+    .logo {
+      width:120px;
+      display:inline-block;
+      margin-left: 100px;
+    }
 }
 
 
 .alert {
-	margin-bottom: 0;
+  margin-bottom: 0;
 }
 .notifications {
-	li {
-		list-style-type: none; 
-	}
+  li {
+    list-style-type: none; 
+  }
 }
 
 
@@ -76,13 +76,13 @@ footer {
 
 /* Vertical Align Fix */
 .valign:before {
-	content:"";
-	height:100%;
-	display:inline-block;
-	vertical-align:middle;
+  content:"";
+  height:100%;
+  display:inline-block;
+  vertical-align:middle;
 }
 .valign > * {
-	display: inline-block;
+  display: inline-block;
 
 }
 .valign-m { vertical-align: middle; }
@@ -92,48 +92,48 @@ footer {
 /* Dashboard */
 
 .codepanel {
-	background: url("codebg.png") 0 0 no-repeat;
-	background-size: cover;
-	color: $white;
-	border-radius: 4px 4px 0 0;
+  background: url("codebg.png") 0 0 no-repeat;
+  background-size: cover;
+  color: $white;
+  border-radius: 4px 4px 0 0;
 }
 
 .panel-footer {
-	background: $white;
-	border-radius: 0 0 4px 4px;
-	border: 1px solid #f0f0f0;
+  background: $white;
+  border-radius: 0 0 4px 4px;
+  border: 1px solid #f0f0f0;
 }
 
 .panel {
-	border: 0px;
-	background: none;
-	border-radius: 4px 4px 4px 4px;
+  border: 0px;
+  background: none;
+  border-radius: 4px 4px 4px 4px;
 }
 
 /* Company profile */
 
 .panel-company {
-	background: $blue;
-	border-radius: 4px 4px 0 0;
-	padding: $pad;
+  background: $blue;
+  border-radius: 4px 4px 0 0;
+  padding: $pad;
 }
 
 
 /* Search */ 
 
 .student-listing {
-	.list-group-item:hover {
-		background: $light_grey;
-	}
+  .list-group-item:hover {
+    background: $light_grey;
+  }
 }
 
 /* Profile customization */
-.striped_bordered { background: #fdfdfd	;border: 2px dashed #DEDEDE;}
+.striped_bordered { background: #fdfdfd ;border: 2px dashed #DEDEDE;}
 
 /*Forms */
 
 .actions {
-	margin: 20px;
+  margin: 20px;
 }
 
 

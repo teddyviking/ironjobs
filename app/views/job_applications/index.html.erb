@@ -1,9 +1,9 @@
 <h1>Your applications</h1>
 
 <ul>
-	<% @applied_job_posts.each do |post| %>
-		<li><%= link_to post.position + " at " + post.company.company_name, company_job_post_path(post.company, post) %></li>
+  <% @applied_job_posts.each do |post| %>
+    <li><%= link_to post.position + " at " + post.company.company_name, company_job_post_path(post.company, post) %></li>
 
-	<% end %>
+  <% end %>
 
 </ul>

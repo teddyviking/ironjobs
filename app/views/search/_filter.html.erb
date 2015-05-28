@@ -1,7 +1,7 @@
 <% if @tags != ""%>
-	Filtering by: <% @tags.each do |tag|%>
-		<strong><%= tag %> </strong>
-	<% end %>
+  Filtering by: <% @tags.each do |tag|%>
+    <strong><%= tag %> </strong>
+  <% end %>
 <% end %>
 <%= flash[:alert] if flash.any? %>
 

@@ -1,26 +1,26 @@
 <article class="col-md-8 inline floatnone valign-t">
 
-	<div class="panel panel-default">
-	  <div class="panel-company media">
-	  			<div class= "media-left media-middle"><%= image_tag @student.avatar.url(:thumb) %></div>
+  <div class="panel panel-default">
+    <div class="panel-company media">
+          <div class= "media-left media-middle"><%= image_tag @student.avatar.url(:thumb) %></div>
 
-	  	<div class="media-body">
-	  		<h3 class=" panel-title font biggest book block color white"><%= @student.name %></h3>
-		</div>
-	  </div>
-	  <div class="panel-body text-left">
-	  	<hr class="blue_bg">
-	    	<p class="font thin small"><strong>Description</strong>: <%= @student.description %> </p>
-	    	<p class="font thin small"><strong>Location</strong>: <%= @student.location %> </p>
-	    	<% if @student.url %><p class="font thin small"><strong>Web</strong>: <%= @student.url %> </p> <% end %>
-	    	<p class="font thin small"><strong>Email</strong>: <%= @student.email %> </p>
-	    	<p class="font thin small"><strong>Currently searching job</strong>: <%= @student.searching ? "Yes" : "No" %></p>
-	  </div>
+      <div class="media-body">
+        <h3 class=" panel-title font biggest book block color white"><%= @student.name %></h3>
+    </div>
+    </div>
+    <div class="panel-body text-left">
+      <hr class="blue_bg">
+        <p class="font thin small"><strong>Description</strong>: <%= @student.description %> </p>
+        <p class="font thin small"><strong>Location</strong>: <%= @student.location %> </p>
+        <% if @student.url %><p class="font thin small"><strong>Web</strong>: <%= @student.url %> </p> <% end %>
+        <p class="font thin small"><strong>Email</strong>: <%= @student.email %> </p>
+        <p class="font thin small"><strong>Currently searching job</strong>: <%= @student.searching ? "Yes" : "No" %></p>
+    </div>
 
-	  <div class= "panel-footer text-left">
-	  		<% if @student.tag_list %>
-				<div><strong>Tags</strong>: <%= @student.tag_list %></div>
-			<% end %>
-	  </div>
-	</div>
+    <div class= "panel-footer text-left">
+        <% if @student.tag_list %>
+        <div><strong>Tags</strong>: <%= @student.tag_list %></div>
+      <% end %>
+    </div>
+  </div>
 </article>
