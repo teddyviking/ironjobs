@@ -5,7 +5,7 @@
 <% end %>
 <%= flash[:alert] if flash.any? %>
 
-<%= link_to set_route_to_filter, remote: true, class: "btn btn-default" do %>
+<%= button_to set_route_to_filter, class: "btn btn-default", id: "reset-tags" do %>
 <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> Reset tags
 
 <% end %>

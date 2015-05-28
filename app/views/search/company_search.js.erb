@@ -1,7 +1,38 @@
+
 $('#filtered-companies').html("<%= escape_javascript render partial: 'companies/company', collection: @companies %>");
 
+var route = function(){
+  <% if set_route_to_filter == "/company_search" %>
+  return "/company_search.js"
+  <% elsif set_route_to_filter == "/job_search"%>
+  return "/job_search.js"
+  <% elsif set_route_to_filter == "/student_search" %>
+  return "/student_search.js"
+  <% end %>
+}
 
-if ($('#search-filters').html() === "") {
-    $('#search-filters').html("<%= escape_javascript render('filter')%>");
-} else {
-  $('#search-filters').html("");}
+$( "#query").val("")
+
+<% if @companies == User.confirmed_companies %>
+  $('#search-filters').html("");
+<% else %>
+  $('#search-filters').html("<%= escape_javascript render('filter')%>");
+<% end %>
+
+$( "#search-form" ).off()
+
+$( "#search-form" ).on("click","#reset-tags", function(event) {
+  event.preventDefault();
+  $("#search-filters").empty();
+  $.ajax({
+    type: "GET",
+    url: route()
+  });
+});
+
+
+
+
+
+
+
